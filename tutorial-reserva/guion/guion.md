@@ -1,61 +1,49 @@
 # Guion de la locución
 
-Voz: Sarah · modelo `eleven_multilingual_v2` · ElevenLabs
+Voz: Brian - Social Media · modelo `eleven_v4` · ElevenLabs
 
-Texto tal como se envía a la voz (por eso la web va como «feria la pantera punto com», el número en palabras y «Cúlqui»).
+Locución generada por la cuenta en ElevenLabs (30-10-2026), cortada por escenas para el montaje.
 
 ## 1. Intro
 
-> ¡Hola! En este video te enseño a reservar tu stand en la Feria La Pantera Pulguera, paso a paso.
+> ¿Quieres tu stand en Feria La Pantera Pulguera? Así lo reservas.
 
 ## 2. Las sedes
 
-> Entra a feria la pantera punto com. Tenemos dos sedes: en El Polo reservas y pagas aquí mismo, en línea. La sede de Surquillo se reserva por WhatsApp, y te lo explico al final.
+> En la sede El Polo, reservas y pagas aquí, en la web. Para Surquillo, pulsa el botón de WhatsApp de esa sede.
 
-## 3. Entrar a El Polo
+## 3. Cuándo abren las reservas
 
-> Para reservar en El Polo, toca «Ver fechas y reservar».
+> Las reservas abren una semana a la vez: cada martes, a las nueve de la mañana, para el sábado y el domingo de esa semana.
 
-## 4. Elegir la fecha
+## 4. Crear cuenta o iniciar sesión
 
-> Aquí ves las próximas fechas. Las reservas abren cada martes a las nueve de la mañana, para el sábado y el domingo de la semana siguiente. Elige tu día y toca «Reservar mi stand».
+> Si es tu primera vez, crea tu cuenta con tu nombre, correo, celular y una contraseña. Las próximas veces, solo inicia sesión.
 
-## 5. El mapa
+## 5. Elegir el domingo y el stand
 
-> Se abre el mapa de la feria. Los stands rosados son de una cara, y los blancos, de dos caras. Los rayados en gris ya no están disponibles.
+> Elige el sábado o el domingo, y toca un stand libre en el mapa. Verás su número y su precio.
 
-## 6. Elegir el stand
+Rótulo en pantalla: «Domingo · Rosado: una cara S/ 85 · Naranja: dos caras S/ 110»
 
-> Toca el stand que quieras. Verás su precio y se agrega a tu carrito, aquí a la derecha. Si quieres, puedes elegir más de uno.
+## 6. Apartar el stand
 
-## 7. El carrito
+> Pulsa «Continuar»: tu stand queda apartado por ocho minutos. Si el tiempo se acaba, vuelve a quedar libre.
 
-> Cuando termines, abre tu carrito. Ahí revisas cada stand y el total. Para seguir, toca «Entrar para continuar». Puedes armar tu carrito sin cuenta, pero para apartar un stand necesitas una.
+## 7. Tus datos
 
-## 8. Crear cuenta o entrar
+> Completa tu nombre, DNI, celular y lo que vas a vender, y pulsa «Ir al pago».
 
-> Si es tu primera vez, crea tu cuenta gratis. Escribe tu nombre completo, tu correo, tu celular y una contraseña de al menos ocho caracteres, con letras y números. Luego toca «Crear mi cuenta». Si ya tienes una, solo entra con tu correo y tu contraseña.
+## 8. Confirma y paga
 
-## 9. Apartar el stand
+> Acepta los términos y pulsa «Pagar». En el formulario de Culqi, paga con tarjeta, o por Yape, con tu celular y el código de «Aprobar compras» de tu app.
 
-> Con tu sesión iniciada, vuelve a tu carrito y toca «Continuar». Desde ese momento, tu stand queda apartado para ti durante ocho minutos.
+Rótulo en pantalla: «Tarjeta o Yape · formulario seguro de Culqi»
 
-## 10. Tus datos
+## 9. Confirmación
 
-> Ahora completa tus datos: nombre de contacto, DNI, celular y qué vas a vender. Recuerda que se puede vender de todo, menos alimentos y bebidas. Arriba ves cuánto tiempo te queda. Cuando termines, toca «Ir al pago».
+> Cuando el pago se confirma, verás tu código de reserva y podrás descargar tu comprobante. También lo tienes en «Mis reservas».
 
-## 11. Confirma y paga
+## 10. Cierre
 
-> En «Confirma y paga» revisa el resumen: tu código de reserva, la fecha, la sede y tu stand. Marca la casilla para aceptar los términos y toca «Pagar». Puedes pagar con tarjeta o con Yape, en el formulario seguro de Cúlqui.
-
-## 12. Confirmación y Mi cuenta
-
-> Cuando se confirma el pago, el stand queda reservado a tu nombre. En «Mi cuenta» ves todas tus reservas, con su código. Y si se acaba el tiempo antes de pagar, el stand se libera y puedes volver a elegir.
-
-## 13. Sede Surquillo
-
-> ¿Prefieres la sede de Surquillo? Toca «Escribir por WhatsApp» y te ayudamos a reservar. El número es nueve dos dos, tres ocho ocho, dos siete siete.
-
-## 14. Cierre
-
-> ¡Listo! Así de fácil reservas tu stand. Nos vemos el fin de semana en La Pantera Pulguera: cosas increíbles a precios accesibles.
+> Reserva tu stand en feria la pantera punto com. ¡Te esperamos!

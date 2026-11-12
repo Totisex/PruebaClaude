@@ -1,45 +1,59 @@
 # Tutorial: cómo reservar un stand en ferialapantera.com
 
-Video tutorial con voz en off (ElevenLabs) del flujo de reserva de la **Feria La
-Pantera Pulguera**, grabado sobre la web en producción
-(<https://ferialapantera.com>) el 12 de noviembre de 2026.
+Video tutorial con voz en off de ElevenLabs del flujo de reserva de la **Feria
+La Pantera Pulguera**, grabado sobre la web en producción
+(<https://ferialapantera.com>) el 12 de noviembre de 2026, con la fecha del
+**domingo 15 de noviembre** (precios y colores de domingo).
 
 | Archivo | Qué es |
 |---|---|
-| `salida/como-reservar.mp4` | Video final, 1920×1080, 30 fps, 3:01 min, ~17 MB (optimizado para web) |
+| `salida/como-reservar.mp4` | Video final, 1920×1080, 30 fps, **1:09 min**, ~8 MB (optimizado para web) |
 | `salida/como-reservar-poster.jpg` | Portada (fotograma del título) |
 | `salida/como-reservar.vtt` | Subtítulos en formato WebVTT |
-| `guion/guion.json` | Guion por escenas: texto narrado, capturas, clics y resaltados |
-| `guion/guion.md` | El mismo guion, para leer |
-| `audio/*.mp3` / `audio/*.json` | Locución de ElevenLabs por escena y sus tiempos por carácter |
+| `guion/guion.json` | Guion por escenas: texto narrado, capturas, clics, resaltados y rótulos |
+| `guion/guion.md` | El texto de la locución, para leer |
+| `audio/brian_v4.mp3` | Locución completa: voz **Brian - Social Media**, modelo **eleven_v4** |
+| `audio/brian_v4_stt.json` | Tiempos por palabra (speech-to-text de ElevenLabs) |
+| `audio/<escena>.mp3/.json` | La locución cortada por escena, con tiempos por carácter |
 | `capturas/` | Capturas HD reales de la web (`cajas.json`: posición de cada botón) |
-| `scripts/generar_voz.py` | Genera la locución con la API de ElevenLabs |
+| `scripts/cortar_pista.py` | Corta una locución completa en escenas usando los tiempos por palabra |
+| `scripts/generar_voz.py` | Genera la locución escena por escena con la API de ElevenLabs |
 | `scripts/montar_video.py` | Monta el video (cursor, zooms, resaltados, subtítulos, audio) |
+
+## La voz
+
+Es la locución que la cuenta generó en ElevenLabs el 30 de octubre de 2026 con la
+voz **Brian - Social Media** (masculina, latinoamericana) y el modelo
+**eleven_v4** (historial `VITSWkG4mueK9n6Jn6nj`). Se descargó del historial, se
+transcribió con la *speech-to-text* de ElevenLabs para obtener el tiempo de cada
+palabra, y `cortar_pista.py` la divide en las pausas entre frases. Así cada
+pantalla, clic y subtítulo ocurre justo cuando Brian lo dice; en dos pausas se
+alargó el silencio para mostrar los precios del domingo y el paso al carrito.
+
+Por qué no se generó una locución nueva: con el plan gratuito, la API de
+ElevenLabs no permite usar voces de la biblioteca como Brian (error
+`paid_plan_required`); desde la web de ElevenLabs sí se puede. Con un plan de
+pago, `generar_voz.py` puede generar cualquier guion nuevo con Brian y
+`eleven_v4` (poner `voice_id` y `model_id` en `guion/guion.json`).
 
 ## El tutorial, por escrito
 
 1. Entra a **ferialapantera.com**. En la sede **El Polo** reservas y pagas en
-   línea; **Surquillo** se reserva por WhatsApp.
-2. Toca **«Ver fechas y reservar»** (o **«Reservar stand»**).
-3. En **Próximas fechas** elige tu día y toca **«Reservar mi stand»**. Las
-   reservas abren cada martes a las 9:00 a. m. para el sábado y el domingo de
-   la semana siguiente.
-4. En el **mapa**, los stands rosados son de una cara y los blancos de dos
-   caras; los rayados en gris no están disponibles. Al tocar un stand ves su
-   precio y se agrega al carrito. Puedes elegir más de uno.
-5. Abre el **carrito**, revisa los stands y el total y toca **«Entrar para
-   continuar»**. El carrito se arma sin cuenta, pero para apartar hace falta una.
-6. **Crea tu cuenta** (nombre completo, correo, celular y contraseña de 8+
-   caracteres con letras y números) o **entra** con tu correo y contraseña.
-7. En el carrito toca **«Continuar»**: el stand queda **apartado 8 minutos**.
-8. Completa **tus datos**: nombre de contacto, DNI, celular y qué vas a vender
-   (de todo, menos alimentos y bebidas). Toca **«Ir al pago»**.
-9. En **«Confirma y paga»** revisa el código de reserva, la fecha, la sede y
-   los stands; marca la casilla de términos y toca **«Pagar»**. Se paga con
-   tarjeta o Yape en el formulario seguro de Culqi.
-10. Con el pago confirmado el stand queda a tu nombre. Tus reservas están en
-    **«Mi cuenta»**. Si se acaba el tiempo antes de pagar, el stand se libera.
-11. **Surquillo**: toca **«Escribir por WhatsApp»** (+51 922 388 277).
+   línea; para **Surquillo**, pulsa el botón de WhatsApp de esa sede.
+2. Las reservas abren cada **martes a las 9:00 a. m.** para el sábado y el
+   domingo.
+3. **Crea tu cuenta** (nombre, correo, celular y contraseña) o, si ya tienes,
+   **inicia sesión**.
+4. Elige el **sábado o el domingo** y toca un stand libre en el **mapa**: verás
+   su número y su precio. El domingo, los **rosados** son de una cara
+   (**S/ 85**) y los **naranjas** de dos caras (**S/ 110**).
+5. En el carrito pulsa **«Continuar»**: el stand queda **apartado 8 minutos**;
+   si el tiempo se acaba, vuelve a quedar libre.
+6. Completa **nombre, DNI, celular y lo que vas a vender** y pulsa **«Ir al pago»**.
+7. Acepta los términos y pulsa **«Pagar»**: tarjeta o Yape en el formulario
+   seguro de Culqi.
+8. Con el pago confirmado verás tu **código de reserva**; tus reservas están en
+   tu cuenta.
 
 ## Cómo ponerlo en la web
 
@@ -52,50 +66,47 @@ El componente `HowToBook` ya espera el video (16:9, MP4):
 
 (Así lo indica el README de `Totisex/pantera-pulguera`; la rama `main` de
 GitHub está desactualizada respecto a producción, así que conviene comprobarlo
-en el código que está desplegado).
+en el código desplegado).
 
 ## Cómo regenerarlo
 
 Requisitos: Python 3 con Pillow y numpy, y ffmpeg.
 
 ```bash
-ELEVENLABS_API_KEY=tu_clave python3 scripts/generar_voz.py      # todas las escenas
-ELEVENLABS_API_KEY=tu_clave python3 scripts/generar_voz.py --solo 11_pago
-python3 scripts/montar_video.py --frames 3,45,128   # fotogramas sueltos para revisar
+python3 scripts/cortar_pista.py                     # locución completa -> una pista por escena
+python3 scripts/montar_video.py --frames 3,30,48    # fotogramas sueltos para revisar
 python3 scripts/montar_video.py                     # video completo en salida/
 ```
 
-Voz: **Sarah** (voz *premade* de ElevenLabs) con `eleven_multilingual_v2`. El
-plan gratuito no permite usar por API voces de la biblioteca (como «Brian -
-Social Media», que es nativa latinoamericana); con un plan de pago basta con
-cambiar `voice_id` en `guion/guion.json` y regenerar. La pronunciación se
-verificó transcribiendo cada pista con la *speech-to-text* de ElevenLabs.
-«Culqi» se escribe «Cúlqui» en el texto narrado para que suene en español; el
-subtítulo muestra «Culqi».
+Para usar otra locución completa: ponla en `audio/`, transcríbela con la
+speech-to-text de ElevenLabs con tiempos por palabra, apunta `voice.pista` y
+`voice.palabras` en el guion y ajusta el texto de cada escena (`tts`) a lo que
+dice la voz.
 
 ## Cómo se grabó (y qué datos aparecen)
 
-- Las capturas son de la web real. Los datos que se ven son de ejemplo
-  (María Rodríguez, `maria@ejemplo.com`, `999 888 777`, DNI `12345678`):
-  el registro se rellenó pero **no se envió**.
-- Para los pasos con sesión se usó la cuenta de administración. En las capturas
-  se sustituyeron, solo en el navegador, el «Panel» de la cabecera y los datos
-  de «Mi cuenta» por los de María, para que se vea lo mismo que ve un feriante.
-- Se apartó el stand 91 del sábado 14 de noviembre (reserva `PP-C5G7VH`) y se
-  llegó a la página de pago **sin pagar**. El apartado expiró solo a los 8
-  minutos y el stand volvió a estar disponible.
-- La pantalla «¡Reserva confirmada!» del video es una tarjeta gráfica, no una
-  captura: no se hizo ningún pago real.
+- Las capturas son de la web real. Los datos visibles son de ejemplo (María
+  Rodríguez, `maria@ejemplo.com`, `999 888 777`, DNI `12345678`); el registro
+  se rellenó pero **no se envió**.
+- Los pasos con sesión se hicieron con la cuenta de administración. En las
+  capturas se sustituyeron, solo en el navegador, el «Panel» de la cabecera y los
+  datos de «Mi cuenta» por los de María, y se tapó el historial.
+- Se apartaron stands para grabar (sábado 14: `PP-C5G7VH`; domingo 15:
+  `PP-SNK8PJ`, stand 91) y se llegó a la página de pago **sin pagar**. Los
+  apartados expiran solos a los 8 minutos.
+- La tarjeta «¡Reserva confirmada!» del video es un gráfico, no una captura:
+  no se hizo ningún pago.
 
 ## Cosas que vi en la web y conviene revisar
 
-1. **El paso 3 de «Cómo reservar»** dice «Nombre, celular, DNI y correo», pero
-   el formulario pide *nombre de contacto, DNI, celular y ¿qué vas a vender?*
-   (el correo sale de la cuenta).
+1. **Paso 3 de «Cómo reservar»:** dice «Nombre, celular, DNI y correo», pero el
+   formulario pide nombre de contacto, DNI, celular y ¿qué vas a vender?
 2. **Precios del sábado:** la web dice «Los sábados, cualquier stand cuesta lo
-   mismo», pero en el mapa del sábado 14 de noviembre el stand 90 cuesta
-   S/ 80.00 (dos caras) y el resto S/ 60.00.
-3. **GitHub desactualizado:** `main` de `Totisex/pantera-pulguera` (13 de
-   octubre) no tiene `/el-polo`, `/carrito` ni Culqi, que sí están en producción.
-4. **Reserva de prueba `PP-C5G7VH`:** quedó registrada (expirada) a nombre de la
-   cuenta de administración; puedes borrarla o ignorarla en el panel.
+   mismo», pero el sábado 14 el stand 90 cuesta S/ 80.00 y el resto S/ 60.00.
+3. **Locución vs. web:** la voz dice «para el sábado y el domingo de esa
+   semana» (la web: «de la semana siguiente») y «Mis reservas» (en la web es
+   «Mi cuenta → Reservas activas»).
+4. **GitHub desactualizado:** `main` de `Totisex/pantera-pulguera` (13 de
+   octubre) no tiene `/el-polo`, `/carrito` ni Culqi.
+5. **Reservas de prueba** `PP-C5G7VH` y `PP-SNK8PJ`: quedan como expiradas a
+   nombre de la cuenta de administración; puedes borrarlas desde el panel.

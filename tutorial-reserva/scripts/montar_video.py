@@ -63,13 +63,15 @@ def build_timeline():
     cajas = json.loads((BASE / "capturas/cajas.json").read_text())
     repl = g.get("subtitle_replacements", {})
     T = dict(scenes=[], shots=[], clicks=[], highs=[], caps=[], overlays=[], badges=[], cursor_vis=[])
+    # con una pista única cortada por escenas, los tramos ya traen sus silencios
+    d_lead, d_tail = (0.0, 0.0) if "pista" in g["voice"] else (0.35, 0.55)
     t = 0.0
     for s in g["scenes"]:
         al = json.loads((BASE / f"audio/{s['id']}.json").read_text())["alignment"]
         text = s["tts"]
         starts, ends = al["character_start_times_seconds"], al["character_end_times_seconds"]
         assert "".join(al["characters"]) == text, f"alineación distinta al guion en {s['id']}"
-        lead, tail = s.get("lead", 0.35), s.get("tail", 0.55)
+        lead, tail = s.get("lead", d_lead), s.get("tail", d_tail)
         adur = duration(BASE / f"audio/{s['id']}.mp3")
         dur = lead + adur + tail
         t0 = t
@@ -79,6 +81,8 @@ def build_timeline():
                 return t0
             if a == "end":
                 return t0 + dur
+            if isinstance(a, str) and a.startswith("@end-"):
+                return t0 + dur - float(a[5:])
             i = text.lower().find(a.lower())
             assert i >= 0, (s["id"], a)
             return t0 + lead + starts[i]
@@ -263,6 +267,8 @@ class Renderer:
         cur = shots[k]["cam"]
         if k == 0:
             return cur
+        if (shots[k]["img"], shots[k]["blur"]) != (shots[k - 1]["img"], shots[k - 1]["blur"]):
+            return cur  # otra captura: entra con su encuadre (el fundido se encarga del cambio)
         prev = self.cam(shots[k]["t"] - 1e-4)
         e = ease_io((t - shots[k]["t"]) / CAM_T)
         return tuple(p + (c - p) * e for p, c in zip(prev, cur))
@@ -282,18 +288,19 @@ class Renderer:
         k = self.shot_index(t)
         s = shots[k]
 
-        def render(sh):
+        def render(sh, c):
             im = load_img(sh["img"], sh["blur"])
-            if sh["blur"] or tuple(round(v, 3) for v in cam) == FULL:
+            if sh["blur"] or tuple(round(v, 3) for v in c) == FULL:
                 return im
-            x, y, w, h = cam
+            x, y, w, h = c
             return im.resize((W, H), Image.BICUBIC, box=(x, y, x + w, y + h))
 
-        cur = render(s)
+        cur = render(s, cam)
         if k > 0 and t - s["t"] < XFADE:
             p = shots[k - 1]
             if (p["img"], p["blur"]) != (s["img"], s["blur"]):
-                return Image.blend(render(p), cur, smooth((t - s["t"]) / XFADE))
+                prev = render(p, self.cam(s["t"] - 1e-4))
+                return Image.blend(prev, cur, smooth((t - s["t"]) / XFADE))
         return cur
 
     # ------------------------------------------------------------- cursor
