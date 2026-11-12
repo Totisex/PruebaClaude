@@ -253,6 +253,22 @@ class Renderer:
     def __init__(self, T):
         self.T = T
         self.shot_t = [s["t"] for s in T["shots"]]
+        self.place_captions()
+
+    def place_captions(self):
+        """Sube un subtítulo arriba si taparía el objetivo de un clic o un resaltado."""
+        band = H - 200
+        for c in self.T["caps"]:
+            cw = caption_img(c["text"]).width
+            cx0, cx1 = (W - cw) / 2, (W + cw) / 2
+            targets = [(k["t"], k["box"]) for k in self.T["clicks"] if c["t"] - 0.9 <= k["t"] <= c["end"] + 0.3]
+            targets += [(h["t"], h["box"]) for h in self.T["highs"] if h["t"] < c["end"] and h["end"] > c["t"]]
+            c["top"] = False
+            for when, box in targets:
+                x0, y0, x1, y1 = self.box_screen(self.cam(when), box)
+                if y1 > band and y0 < H - 40 and x1 > cx0 and x0 < cx1:
+                    c["top"] = True
+            c["below_badge"] = any(b["t"] < c["end"] and b["end"] > c["t"] for b in self.T["badges"])
 
     def shot_index(self, t):
         k = 0
@@ -396,7 +412,8 @@ class Renderer:
             if a < 1:
                 im = im.copy()
                 im.putalpha(im.getchannel("A").point(lambda v: int(v * a)))
-            layer.alpha_composite(im, (int((W - im.width) / 2), int(H - 56 - im.height)))
+            y = (232 if c.get("below_badge") else 130) if c.get("top") else H - 56 - im.height
+            layer.alpha_composite(im, (int((W - im.width) / 2), int(y)))
 
     def draw_badges(self, layer, t):
         for b in self.T["badges"]:

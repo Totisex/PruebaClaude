@@ -1,15 +1,19 @@
 {
-  "title": "Cómo reservar tu stand — Feria La Pantera Pulguera (domingo)",
+  "title": "Cómo reservar tu stand — Feria La Pantera Pulguera (reglas de reserva actualizadas)",
   "voice": {
-    "name": "Brian - Social Media",
-    "voice_id": "U9TSK9KHMlMU2qkeXlQP",
+    "name": "Brian - Warm, Smooth, Confident",
+    "voice_id": null,
     "model_id": "eleven_v4",
-    "fuente": "Pista generada por la cuenta en ElevenLabs el 30-10-2026 (historial VITSWkG4mueK9n6Jn6nj). scripts/cortar_pista.py la divide en una pista por escena usando los tiempos por palabra de la speech-to-text de ElevenLabs.",
-    "pista": "audio/brian_v4.mp3",
-    "palabras": "audio/brian_v4_stt.json"
+    "fuente": "Locución generada por la cuenta desde la web de ElevenLabs el 12-11-2026 (voz Brian, modelo v4, estabilidad 50, similitud 75) con guion/locucion-brian-v3.txt y subida a la sesión. scripts/cortar_pista.py la divide por escenas con los tiempos por palabra de la speech-to-text de ElevenLabs.",
+    "pista": "audio/brian_v4_v3.mp3",
+    "palabras": "audio/brian_v4_v3_stt.json"
   },
   "subtitle_replacements": {
-    "feria la pantera punto com": "ferialapantera.com"
+    "feria la pantera punto com": "ferialapantera.com",
+    "diez de la mañana.": "10:00 a. m.",
+    "diez de la mañana": "10:00 a. m.",
+    "ochenta y cinco soles": "S/ 85",
+    "ciento diez": "S/ 110"
   },
   "scenes": [
     {
@@ -18,7 +22,7 @@
       "lead": 0.9,
       "shots": [
         {
-          "img": "s01_home",
+          "img": "v_home",
           "at": 0,
           "blur": true
         }
@@ -37,32 +41,39 @@
     },
     {
       "id": "02_sedes",
-      "tts": "En la sede El Polo, reservas y pagas aquí, en la web. Para Surquillo, pulsa el botón de WhatsApp de esa sede.",
+      "tts": "En la sede El Polo, reservas y pagas aquí, en la web. En Surquillo, se reserva por WhatsApp, cada miércoles desde las diez de la mañana.",
       "shots": [
         {
-          "img": "s01_home",
+          "img": "v_home",
           "at": 0
         },
         {
-          "img": "s02b_sedes_cards",
+          "img": "v_sedes",
           "at": "En la sede"
         }
       ],
       "highlights": [
         {
           "box": [
-            62,
+            988,
             112,
             876,
             756
           ],
-          "at": "El Polo,"
+          "at": "En Surquillo"
+        },
+        {
+          "box": "surq_reglas",
+          "img": "v_sedes",
+          "at": "cada miércoles",
+          "pad": 10
         }
       ],
       "clicks": [
         {
           "box": "wa_btn",
-          "at": "botón de WhatsApp"
+          "img": "v_sedes",
+          "at": "por WhatsApp"
         }
       ],
       "cursor_start": [
@@ -72,22 +83,19 @@
     },
     {
       "id": "03_apertura",
-      "tts": "Las reservas abren una semana a la vez: cada martes, a las nueve de la mañana, para el sábado y el domingo de esa semana.",
+      "tts": "En El Polo, las reservas abren cada lunes a las diez de la mañana, con dos semanas de anticipación: para el sábado y el domingo de la semana siguiente.",
       "shots": [
         {
-          "img": "d03_elpolo_fechas",
+          "img": "v_fechas",
           "at": 0
         }
       ],
       "highlights": [
         {
-          "box": [
-            50,
-            372,
-            1075,
-            92
-          ],
-          "at": "cada martes"
+          "box": "regla",
+          "img": "v_fechas",
+          "at": "cada lunes",
+          "pad": 10
         },
         {
           "box": [
@@ -97,6 +105,13 @@
             90
           ],
           "at": "para el sábado"
+        }
+      ],
+      "badges": [
+        {
+          "text": "El Polo · Reservas cada lunes, 10:00 a. m. · 2 semanas antes",
+          "at": "cada lunes",
+          "to": "end"
         }
       ],
       "cursor": "hidden"
@@ -174,48 +189,51 @@
     },
     {
       "id": "05_mapa",
-      "tts": "Elige el sábado o el domingo, y toca un stand libre en el mapa. Verás su número y su precio.",
-      "tail": 3.6,
+      "tts": "Elige el sábado o el domingo, y toca un stand libre en el mapa. El domingo, los rosados son de una cara, a ochenta y cinco soles, y los naranjas, de dos caras, a ciento diez.",
+      "tail": 1.4,
       "shots": [
         {
-          "img": "d03_elpolo_fechas",
+          "img": "v_fechas",
           "at": 0
         },
         {
-          "img": "d04_mapa",
+          "img": "v_mapa",
           "at": "y toca un stand"
         },
         {
-          "img": "d04_mapa_91",
-          "at": "Verás su número"
+          "img": "v_mapa_91",
+          "at": "El domingo, los rosados"
         }
       ],
       "clicks": [
         {
           "box": "dom_btn",
-          "img": "d03_elpolo_fechas",
-          "at": "el domingo"
+          "img": "v_fechas",
+          "at": "o el domingo"
         },
         {
           "box": "s91",
-          "img": "d04_mapa",
+          "img": "v_mapa",
           "at": "en el mapa"
         },
         {
           "box": "carrito_hdr",
-          "img": "d04_mapa_91",
-          "at": "@end-0.7"
+          "img": "v_mapa_91",
+          "at": "@end-0.6"
         }
       ],
       "highlights": [
         {
-          "box": [
-            176,
-            228,
-            630,
-            72
-          ],
-          "at": "Verás su número"
+          "box": "s123",
+          "img": "v_mapa",
+          "at": "los rosados",
+          "pad": 8
+        },
+        {
+          "box": "s91",
+          "img": "v_mapa",
+          "at": "los naranjas",
+          "pad": 8
         },
         {
           "box": [
@@ -224,13 +242,13 @@
             486,
             150
           ],
-          "at": "@end-3.3"
+          "at": "a ciento diez"
         }
       ],
       "badges": [
         {
           "text": "Domingo · Rosado: una cara S/ 85 · Naranja: dos caras S/ 110",
-          "at": "@end-3.3",
+          "at": "El domingo, los rosados",
           "to": "end"
         }
       ],
@@ -244,11 +262,11 @@
       "tts": "Pulsa «Continuar»: tu stand queda apartado por ocho minutos. Si el tiempo se acaba, vuelve a quedar libre.",
       "shots": [
         {
-          "img": "d09_carrito_login",
+          "img": "v_carrito",
           "at": 0
         },
         {
-          "img": "d10_datos_0",
+          "img": "v_datos_0",
           "at": "Si el tiempo",
           "cam": [
             880,
@@ -261,20 +279,20 @@
       "clicks": [
         {
           "box": "continuar",
-          "img": "d09_carrito_login",
+          "img": "v_carrito",
           "at": "Continuar"
         }
       ],
       "highlights": [
         {
           "box": "aviso",
-          "img": "d09_carrito_login",
+          "img": "v_carrito",
           "at": "queda apartado",
           "pad": 12
         },
         {
           "box": "timer",
-          "img": "d10_datos_0",
+          "img": "v_datos_0",
           "at": "Si el tiempo",
           "pad": 14
         }
@@ -282,10 +300,10 @@
     },
     {
       "id": "07_datos",
-      "tts": "Completa tu nombre, DNI, celular y lo que vas a vender, y pulsa «Ir al pago».",
+      "tts": "Completa tu nombre, DNI, celular y lo que vas a vender, y pulsa «Ir al pago». Recuerda: no se alquilan stands para venta de alimentos.",
       "shots": [
         {
-          "img": "d10_datos_0",
+          "img": "v_datos_0",
           "at": 0,
           "cam": [
             880,
@@ -295,7 +313,7 @@
           ]
         },
         {
-          "img": "d10_datos_3",
+          "img": "v_datos_3",
           "at": "tu nombre",
           "cam": [
             880,
@@ -305,7 +323,7 @@
           ]
         },
         {
-          "img": "d10_datos_5",
+          "img": "v_datos_5",
           "at": "lo que vas a vender",
           "cam": [
             880,
@@ -318,20 +336,27 @@
       "clicks": [
         {
           "box": "name",
-          "img": "d10_datos_3",
+          "img": "v_datos_3",
           "at": "tu nombre",
           "noclick": true
         },
         {
           "box": "notes",
-          "img": "d10_datos_5",
+          "img": "v_datos_5",
           "at": "vender",
           "noclick": true
         },
         {
           "box": "pagar",
-          "img": "d10_datos_5",
+          "img": "v_datos_5",
           "at": "Ir al pago"
+        }
+      ],
+      "badges": [
+        {
+          "text": "No se alquilan stands para venta de alimentos",
+          "at": "Recuerda",
+          "to": "end"
         }
       ]
     },
@@ -340,30 +365,30 @@
       "tts": "Acepta los términos y pulsa «Pagar». En el formulario de Culqi, paga con tarjeta, o por Yape, con tu celular y el código de «Aprobar compras» de tu app.",
       "shots": [
         {
-          "img": "d11_pago_0",
+          "img": "v_pago_0",
           "at": 0
         },
         {
-          "img": "d11_pago_2",
+          "img": "v_pago_2",
           "at": "y pulsa"
         }
       ],
       "clicks": [
         {
           "box": "check",
-          "img": "d11_pago_0",
+          "img": "v_pago_0",
           "at": "Acepta los términos"
         },
         {
           "box": "pagar",
-          "img": "d11_pago_2",
+          "img": "v_pago_2",
           "at": "«Pagar»"
         }
       ],
       "highlights": [
         {
           "box": "culqi",
-          "img": "d11_pago_2",
+          "img": "v_pago_2",
           "at": "En el formulario",
           "pad": 12
         }
@@ -378,15 +403,16 @@
     },
     {
       "id": "09_confirmacion",
-      "tts": "Cuando el pago se confirma, verás tu código de reserva y podrás descargar tu comprobante. También lo tienes en «Mis reservas».",
+      "tts": "Cuando el pago se confirma, verás tu código de reserva. También lo tienes en «Mi cuenta».",
+      "tail": 1.0,
       "shots": [
         {
-          "img": "d11_pago_2",
+          "img": "v_pago_2",
           "at": 0,
           "blur": true
         },
         {
-          "img": "d12_micuenta",
+          "img": "v_micuenta",
           "at": "También"
         }
       ],
@@ -396,7 +422,7 @@
           "from": 0,
           "to": "También",
           "title": "¡Reserva confirmada!",
-          "sub": "Guarda tu código y tu comprobante"
+          "sub": "Guarda tu código de reserva"
         }
       ],
       "highlights": [
@@ -407,11 +433,10 @@
             1118,
             162
           ],
-          "at": "Mis reservas"
+          "at": "«Mi cuenta»"
         }
       ],
-      "cursor": "hidden",
-      "tail": 1.2
+      "cursor": "hidden"
     },
     {
       "id": "10_cierre",
@@ -419,7 +444,7 @@
       "tail": 2.2,
       "shots": [
         {
-          "img": "s01_home",
+          "img": "v_home",
           "at": 0,
           "blur": true
         }
