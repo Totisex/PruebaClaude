@@ -1,0 +1,682 @@
+{
+  "title": "Cómo reservar tu stand — Feria La Pantera Pulguera",
+  "voice": {
+    "name": "Sarah",
+    "voice_id": "EXAVITQu4vr4xnSDxMaL",
+    "model_id": "eleven_multilingual_v2",
+    "voice_settings": {
+      "stability": 0.5,
+      "similarity_boost": 0.8,
+      "style": 0.15,
+      "use_speaker_boost": true,
+      "speed": 1.0
+    }
+  },
+  "subtitle_replacements": {
+    "feria la pantera punto com": "ferialapantera.com",
+    "nueve dos dos, tres ocho ocho, dos siete siete": "+51 922 388 277",
+    "Cúlqui": "Culqi"
+  },
+  "scenes": [
+    {
+      "id": "01_intro",
+      "tts": "¡Hola! En este video te enseño a reservar tu stand en la Feria La Pantera Pulguera, paso a paso.",
+      "lead": 3.2,
+      "shots": [
+        {
+          "img": "s01_home",
+          "at": 0,
+          "blur": true
+        }
+      ],
+      "overlays": [
+        {
+          "type": "title",
+          "from": 0,
+          "to": "end",
+          "title": "Cómo reservar\ntu stand",
+          "kicker": "Tutorial paso a paso",
+          "sub": "Feria La Pantera Pulguera"
+        }
+      ],
+      "cursor": "hidden"
+    },
+    {
+      "id": "02_sedes",
+      "tts": "Entra a feria la pantera punto com. Tenemos dos sedes: en El Polo reservas y pagas aquí mismo, en línea. La sede de Surquillo se reserva por WhatsApp, y te lo explico al final.",
+      "shots": [
+        {
+          "img": "s01_home",
+          "at": 0
+        },
+        {
+          "img": "s02b_sedes_cards",
+          "at": "Tenemos dos sedes"
+        }
+      ],
+      "highlights": [
+        {
+          "box": [
+            62,
+            112,
+            876,
+            756
+          ],
+          "at": "en El Polo"
+        },
+        {
+          "box": [
+            988,
+            112,
+            876,
+            756
+          ],
+          "at": "La sede de Surquillo"
+        }
+      ],
+      "cursor": "hidden"
+    },
+    {
+      "id": "03_el_polo",
+      "tts": "Para reservar en El Polo, toca «Ver fechas y reservar».",
+      "shots": [
+        {
+          "img": "s02b_sedes_cards",
+          "at": 0
+        }
+      ],
+      "clicks": [
+        {
+          "box": [
+            103,
+            745,
+            420,
+            75
+          ],
+          "at": "Ver fechas"
+        }
+      ],
+      "cursor_start": [
+        960,
+        900
+      ]
+    },
+    {
+      "id": "04_fechas",
+      "tts": "Aquí ves las próximas fechas. Las reservas abren cada martes a las nueve de la mañana, para el sábado y el domingo de la semana siguiente. Elige tu día y toca «Reservar mi stand».",
+      "shots": [
+        {
+          "img": "s03_elpolo_top",
+          "at": 0
+        },
+        {
+          "img": "s03_elpolo_fechas",
+          "at": "las próximas fechas"
+        }
+      ],
+      "highlights": [
+        {
+          "box": [
+            50,
+            372,
+            1075,
+            92
+          ],
+          "at": "abren cada martes"
+        },
+        {
+          "box": [
+            58,
+            625,
+            440,
+            445
+          ],
+          "at": "Elige tu día"
+        }
+      ],
+      "clicks": [
+        {
+          "box": "fecha_btn",
+          "at": "Reservar mi stand"
+        }
+      ]
+    },
+    {
+      "id": "05_mapa",
+      "tts": "Se abre el mapa de la feria. Los stands rosados son de una cara, y los blancos, de dos caras. Los rayados en gris ya no están disponibles.",
+      "shots": [
+        {
+          "img": "s04_mapa_top",
+          "at": 0
+        },
+        {
+          "img": "s04_mapa",
+          "at": "el mapa de la feria"
+        }
+      ],
+      "highlights": [
+        {
+          "box": "s91",
+          "at": "rosados",
+          "pad": 10
+        },
+        {
+          "box": "s90",
+          "at": "los blancos",
+          "pad": 10
+        },
+        {
+          "box": "s110",
+          "at": "rayados",
+          "pad": 10
+        }
+      ],
+      "cursor": "hidden"
+    },
+    {
+      "id": "06_elegir",
+      "tts": "Toca el stand que quieras. Verás su precio y se agrega a tu carrito, aquí a la derecha. Si quieres, puedes elegir más de uno.",
+      "shots": [
+        {
+          "img": "s04_mapa",
+          "at": 0
+        },
+        {
+          "img": "s04_mapa_91",
+          "at": "Verás su precio"
+        }
+      ],
+      "clicks": [
+        {
+          "box": "s91",
+          "at": "el stand que"
+        }
+      ],
+      "highlights": [
+        {
+          "box": [
+            176,
+            228,
+            610,
+            72
+          ],
+          "at": "su precio"
+        },
+        {
+          "box": [
+            1296,
+            292,
+            550,
+            120
+          ],
+          "at": "a tu carrito"
+        }
+      ],
+      "cursor_start": [
+        700,
+        900
+      ]
+    },
+    {
+      "id": "07_carrito",
+      "tts": "Cuando termines, abre tu carrito. Ahí revisas cada stand y el total. Para seguir, toca «Entrar para continuar». Puedes armar tu carrito sin cuenta, pero para apartar un stand necesitas una.",
+      "shots": [
+        {
+          "img": "s04_mapa_91",
+          "at": 0
+        },
+        {
+          "img": "s05_carrito_anon",
+          "at": "Ahí revisas"
+        }
+      ],
+      "clicks": [
+        {
+          "box": [
+            1262,
+            28,
+            168,
+            52
+          ],
+          "at": "abre tu carrito"
+        },
+        {
+          "box": [
+            1321,
+            630,
+            507,
+            93
+          ],
+          "at": "Entrar para continuar"
+        }
+      ],
+      "highlights": [
+        {
+          "box": [
+            62,
+            508,
+            1186,
+            168
+          ],
+          "at": "cada stand"
+        },
+        {
+          "box": [
+            1318,
+            525,
+            515,
+            85
+          ],
+          "at": "el total"
+        }
+      ]
+    },
+    {
+      "id": "08_cuenta",
+      "tts": "Si es tu primera vez, crea tu cuenta gratis. Escribe tu nombre completo, tu correo, tu celular y una contraseña de al menos ocho caracteres, con letras y números. Luego toca «Crear mi cuenta». Si ya tienes una, solo entra con tu correo y tu contraseña.",
+      "shots": [
+        {
+          "img": "s06_registro_0",
+          "at": 0,
+          "cam": [
+            400,
+            240,
+            1120,
+            630
+          ]
+        },
+        {
+          "img": "s06_registro_1",
+          "at": "nombre completo",
+          "cam": [
+            400,
+            240,
+            1120,
+            630
+          ]
+        },
+        {
+          "img": "s06_registro_2",
+          "at": "tu correo,",
+          "cam": [
+            400,
+            290,
+            1120,
+            630
+          ]
+        },
+        {
+          "img": "s06_registro_3",
+          "at": "tu celular",
+          "cam": [
+            400,
+            400,
+            1120,
+            630
+          ]
+        },
+        {
+          "img": "s06_registro_4",
+          "at": "una contraseña",
+          "cam": [
+            400,
+            450,
+            1120,
+            630
+          ]
+        },
+        {
+          "img": "s06_registro_5",
+          "at": "Luego toca"
+        },
+        {
+          "img": "s07_login",
+          "at": "Si ya tienes una"
+        }
+      ],
+      "clicks": [
+        {
+          "box": "name",
+          "img": "s06_registro_1",
+          "at": "nombre completo",
+          "noclick": true
+        },
+        {
+          "box": "email",
+          "img": "s06_registro_2",
+          "at": "tu correo,",
+          "noclick": true
+        },
+        {
+          "box": "phone",
+          "img": "s06_registro_3",
+          "at": "tu celular",
+          "noclick": true
+        },
+        {
+          "box": "password",
+          "img": "s06_registro_4",
+          "at": "una contraseña",
+          "noclick": true
+        },
+        {
+          "box": "submit",
+          "img": "s06_registro_5",
+          "at": "Crear mi cuenta"
+        },
+        {
+          "box": "submit",
+          "img": "s07_login",
+          "at": "con tu correo y tu contraseña"
+        }
+      ]
+    },
+    {
+      "id": "09_continuar",
+      "tts": "Con tu sesión iniciada, vuelve a tu carrito y toca «Continuar». Desde ese momento, tu stand queda apartado para ti durante ocho minutos.",
+      "shots": [
+        {
+          "img": "s09_carrito_login",
+          "at": 0
+        }
+      ],
+      "clicks": [
+        {
+          "box": "continuar",
+          "at": "Continuar"
+        }
+      ],
+      "highlights": [
+        {
+          "box": "aviso",
+          "at": "queda apartado",
+          "pad": 12
+        }
+      ]
+    },
+    {
+      "id": "10_datos",
+      "tts": "Ahora completa tus datos: nombre de contacto, DNI, celular y qué vas a vender. Recuerda que se puede vender de todo, menos alimentos y bebidas. Arriba ves cuánto tiempo te queda. Cuando termines, toca «Ir al pago».",
+      "shots": [
+        {
+          "img": "s10_datos_0",
+          "at": 0,
+          "cam": [
+            880,
+            289,
+            1040,
+            585
+          ]
+        },
+        {
+          "img": "s10_datos_1",
+          "at": "nombre de contacto",
+          "cam": [
+            880,
+            289,
+            1040,
+            585
+          ]
+        },
+        {
+          "img": "s10_datos_2",
+          "at": "DNI",
+          "cam": [
+            880,
+            400,
+            1040,
+            585
+          ]
+        },
+        {
+          "img": "s10_datos_3",
+          "at": "celular y",
+          "cam": [
+            880,
+            495,
+            1040,
+            585
+          ]
+        },
+        {
+          "img": "s10_datos_5",
+          "at": "qué vas a vender",
+          "cam": [
+            880,
+            120,
+            1040,
+            585
+          ]
+        },
+        {
+          "img": "s10_datos_4",
+          "at": "Arriba ves",
+          "cam": [
+            880,
+            250,
+            1040,
+            585
+          ]
+        },
+        {
+          "img": "s10_datos_5",
+          "at": "Cuando termines",
+          "cam": [
+            880,
+            120,
+            1040,
+            585
+          ]
+        }
+      ],
+      "clicks": [
+        {
+          "box": "name",
+          "img": "s10_datos_1",
+          "at": "nombre de contacto",
+          "noclick": true
+        },
+        {
+          "box": "dni",
+          "img": "s10_datos_2",
+          "at": "DNI",
+          "noclick": true
+        },
+        {
+          "box": "phone",
+          "img": "s10_datos_3",
+          "at": "celular y",
+          "noclick": true
+        },
+        {
+          "box": "notes",
+          "img": "s10_datos_5",
+          "at": "qué vas a vender",
+          "noclick": true
+        },
+        {
+          "box": "pagar",
+          "img": "s10_datos_5",
+          "at": "Ir al pago"
+        }
+      ],
+      "highlights": [
+        {
+          "box": "timer",
+          "img": "s10_datos_4",
+          "at": "cuánto tiempo",
+          "pad": 14
+        }
+      ],
+      "badges": [
+        {
+          "text": "No se aceptan alimentos ni bebidas",
+          "at": "menos alimentos",
+          "to": "Arriba ves"
+        }
+      ]
+    },
+    {
+      "id": "11_pago",
+      "tts": "En «Confirma y paga» revisa el resumen: tu código de reserva, la fecha, la sede y tu stand. Marca la casilla para aceptar los términos y toca «Pagar». Puedes pagar con tarjeta o con Yape, en el formulario seguro de Cúlqui.",
+      "shots": [
+        {
+          "img": "s11_pago_0",
+          "at": 0
+        },
+        {
+          "img": "s11_pago_2",
+          "at": "para aceptar"
+        }
+      ],
+      "highlights": [
+        {
+          "box": [
+            88,
+            432,
+            1040,
+            100
+          ],
+          "at": "tu código de reserva"
+        },
+        {
+          "box": [
+            88,
+            588,
+            490,
+            110
+          ],
+          "at": "la fecha"
+        },
+        {
+          "box": [
+            602,
+            588,
+            500,
+            135
+          ],
+          "at": "la sede"
+        },
+        {
+          "box": [
+            70,
+            905,
+            1050,
+            60
+          ],
+          "at": "tu stand"
+        },
+        {
+          "box": "culqi",
+          "img": "s11_pago_2",
+          "at": "con tarjeta",
+          "pad": 12
+        }
+      ],
+      "clicks": [
+        {
+          "box": "check",
+          "img": "s11_pago_0",
+          "at": "Marca la casilla"
+        },
+        {
+          "box": "pagar",
+          "img": "s11_pago_2",
+          "at": "«Pagar»"
+        }
+      ]
+    },
+    {
+      "id": "12_confirmacion",
+      "tts": "Cuando se confirma el pago, el stand queda reservado a tu nombre. En «Mi cuenta» ves todas tus reservas, con su código. Y si se acaba el tiempo antes de pagar, el stand se libera y puedes volver a elegir.",
+      "shots": [
+        {
+          "img": "s11_pago_2",
+          "at": 0,
+          "blur": true
+        },
+        {
+          "img": "s12_micuenta",
+          "at": "En «Mi cuenta»"
+        }
+      ],
+      "overlays": [
+        {
+          "type": "confirm",
+          "from": 0,
+          "to": "En «Mi cuenta»",
+          "title": "¡Reserva confirmada!",
+          "sub": "Tu stand queda a tu nombre"
+        }
+      ],
+      "highlights": [
+        {
+          "box": [
+            62,
+            568,
+            1118,
+            162
+          ],
+          "at": "tus reservas"
+        }
+      ],
+      "cursor": "hidden"
+    },
+    {
+      "id": "13_surquillo",
+      "tts": "¿Prefieres la sede de Surquillo? Toca «Escribir por WhatsApp» y te ayudamos a reservar. El número es nueve dos dos, tres ocho ocho, dos siete siete.",
+      "shots": [
+        {
+          "img": "s02b_sedes_cards",
+          "at": 0,
+          "cam": [
+            905,
+            433,
+            1000,
+            563
+          ]
+        }
+      ],
+      "clicks": [
+        {
+          "box": "wa_btn",
+          "at": "Escribir por WhatsApp"
+        }
+      ],
+      "badges": [
+        {
+          "text": "WhatsApp: +51 922 388 277",
+          "at": "El número",
+          "to": "end",
+          "big": true
+        }
+      ],
+      "cursor_start": [
+        1500,
+        1000
+      ]
+    },
+    {
+      "id": "14_cierre",
+      "tts": "¡Listo! Así de fácil reservas tu stand. Nos vemos el fin de semana en La Pantera Pulguera: cosas increíbles a precios accesibles.",
+      "tail": 2.5,
+      "shots": [
+        {
+          "img": "s01_home",
+          "at": 0,
+          "blur": true
+        }
+      ],
+      "overlays": [
+        {
+          "type": "outro",
+          "from": 0,
+          "to": "end",
+          "title": "Reserva tu stand en\nferialapantera.com",
+          "sub": "Sábados y domingos · 9:00 AM - 5:00 PM"
+        }
+      ],
+      "cursor": "hidden"
+    }
+  ]
+}
