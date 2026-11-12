@@ -1,0 +1,10 @@
+¿Quieres tu stand en Feria La Pantera Pulguera? Así lo reservas. <break time="1.0s" />
+En la sede El Polo, reservas y pagas aquí, en la web. En Surquillo, se reserva por WhatsApp, cada miércoles desde las diez de la mañana. <break time="1.0s" />
+En El Polo, las reservas abren cada lunes a las diez de la mañana, con dos semanas de anticipación: para el sábado y el domingo de la semana siguiente. <break time="1.0s" />
+Si es tu primera vez, crea tu cuenta con tu nombre, correo, celular y una contraseña. Las próximas veces, solo inicia sesión. <break time="1.0s" />
+Elige el sábado o el domingo, y toca un stand libre en el mapa. El domingo, los rosados son de una cara, a ochenta y cinco soles, y los naranjas, de dos caras, a ciento diez. <break time="1.0s" />
+Pulsa «Continuar»: tu stand queda apartado por ocho minutos. Si el tiempo se acaba, vuelve a quedar libre. <break time="1.0s" />
+Completa tu nombre, DNI, celular y lo que vas a vender, y pulsa «Ir al pago». Recuerda: no se alquilan stands para venta de alimentos. <break time="1.0s" />
+Acepta los términos y pulsa «Pagar». En el formulario de Culqi, paga con tarjeta, o por Yape, con tu celular y el código de «Aprobar compras» de tu app. <break time="1.0s" />
+Cuando el pago se confirma, verás tu código de reserva. También lo tienes en «Mi cuenta». <break time="1.0s" />
+Reserva tu stand en feria la pantera punto com. ¡Te esperamos!
