@@ -22,7 +22,7 @@
       "lead": 0.9,
       "shots": [
         {
-          "img": "v_home",
+          "img": "h_home",
           "at": 0,
           "blur": true
         }
@@ -44,15 +44,46 @@
       "tts": "En la sede El Polo, reservas y pagas aquí, en la web. En Surquillo, se reserva por WhatsApp, cada miércoles desde las diez de la mañana.",
       "shots": [
         {
-          "img": "v_home",
-          "at": 0
+          "img": "h_home_full",
+          "at": 0,
+          "cam": [
+            0,
+            0,
+            1920,
+            1080
+          ],
+          "header": "h_home",
+          "kb": false
         },
         {
-          "img": "v_sedes",
-          "at": "En la sede"
+          "img": "h_home_full",
+          "at": "En la sede",
+          "cam": [
+            0,
+            2912,
+            1920,
+            1080
+          ],
+          "header": "h_home",
+          "cam_dur": 1.6,
+          "kb": false
+        },
+        {
+          "img": "h_sedes",
+          "at": "En la sede+1.65",
+          "tr": "fade"
         }
       ],
       "highlights": [
+        {
+          "box": [
+            62,
+            112,
+            876,
+            756
+          ],
+          "at": "aquí, en la web"
+        },
         {
           "box": [
             988,
@@ -64,7 +95,7 @@
         },
         {
           "box": "surq_reglas",
-          "img": "v_sedes",
+          "img": "h_sedes",
           "at": "cada miércoles",
           "pad": 10
         }
@@ -72,7 +103,7 @@
       "clicks": [
         {
           "box": "wa_btn",
-          "img": "v_sedes",
+          "img": "h_sedes",
           "at": "por WhatsApp"
         }
       ],
@@ -86,15 +117,46 @@
       "tts": "En El Polo, las reservas abren cada lunes a las diez de la mañana, con dos semanas de anticipación: para el sábado y el domingo de la semana siguiente.",
       "shots": [
         {
-          "img": "v_fechas",
+          "img": "h_sedes",
           "at": 0
+        },
+        {
+          "img": "h_polo_full",
+          "at": "En El Polo+0.45",
+          "cam": [
+            0,
+            0,
+            1920,
+            1080
+          ],
+          "header": "h_home",
+          "kb": false,
+          "tr": "nav"
+        },
+        {
+          "img": "h_polo_full",
+          "at": "las reservas abren+0.2",
+          "cam": [
+            0,
+            669,
+            1920,
+            1080
+          ],
+          "header": "h_home",
+          "cam_dur": 1.3,
+          "kb": false
+        },
+        {
+          "img": "v_fechas",
+          "at": "las reservas abren+1.55",
+          "tr": "cut"
         }
       ],
       "highlights": [
         {
           "box": "regla",
           "img": "v_fechas",
-          "at": "cada lunes",
+          "at": "las reservas abren+1.6",
           "pad": 10
         },
         {
@@ -110,18 +172,24 @@
       "badges": [
         {
           "text": "El Polo · Reservas cada lunes, 10:00 a. m. · 2 semanas antes",
-          "at": "cada lunes",
+          "at": "con dos semanas",
           "to": "end"
         }
       ],
-      "cursor": "hidden"
+      "clicks": [
+        {
+          "box": "polo_btn",
+          "img": "h_sedes",
+          "at": "En El Polo"
+        }
+      ]
     },
     {
       "id": "04_cuenta",
       "tts": "Si es tu primera vez, crea tu cuenta con tu nombre, correo, celular y una contraseña. Las próximas veces, solo inicia sesión.",
       "shots": [
         {
-          "img": "s06_registro_0",
+          "img": "s06_registro_4",
           "at": 0,
           "cam": [
             400,
@@ -131,27 +199,7 @@
           ]
         },
         {
-          "img": "s06_registro_1",
-          "at": "tu nombre",
-          "cam": [
-            400,
-            240,
-            1120,
-            630
-          ]
-        },
-        {
-          "img": "s06_registro_2",
-          "at": "correo",
-          "cam": [
-            400,
-            240,
-            1120,
-            630
-          ]
-        },
-        {
-          "img": "s06_registro_3",
+          "img": "s06_registro_4",
           "at": "celular",
           "cam": [
             400,
@@ -161,21 +209,36 @@
           ]
         },
         {
-          "img": "s06_registro_4",
-          "at": "una contraseña",
-          "cam": [
-            400,
-            450,
-            1120,
-            630
-          ]
-        },
-        {
           "img": "s07_login",
-          "at": "Las próximas veces"
+          "at": "Las próximas veces",
+          "tr": "fade"
         }
       ],
       "clicks": [
+        {
+          "box": "name",
+          "img": "s06_registro_4",
+          "at": "tu nombre",
+          "noclick": true
+        },
+        {
+          "box": "email",
+          "img": "s06_registro_4",
+          "at": "correo",
+          "noclick": true
+        },
+        {
+          "box": "phone",
+          "img": "s06_registro_4",
+          "at": "celular",
+          "noclick": true
+        },
+        {
+          "box": "password",
+          "img": "s06_registro_4",
+          "at": "una contraseña",
+          "noclick": true
+        },
         {
           "box": "submit",
           "img": "s07_login",
@@ -185,6 +248,32 @@
       "cursor_start": [
         1300,
         900
+      ],
+      "type": [
+        {
+          "img": "s06_registro_4",
+          "box": "name",
+          "at": "tu nombre",
+          "dur": 0.8
+        },
+        {
+          "img": "s06_registro_4",
+          "box": "email",
+          "at": "correo",
+          "dur": 0.8
+        },
+        {
+          "img": "s06_registro_4",
+          "box": "phone",
+          "at": "celular",
+          "dur": 0.6
+        },
+        {
+          "img": "s06_registro_4",
+          "box": "password",
+          "at": "una contraseña",
+          "dur": 0.7
+        }
       ]
     },
     {
@@ -194,7 +283,8 @@
       "shots": [
         {
           "img": "v_fechas",
-          "at": 0
+          "at": 0,
+          "tr": "fade"
         },
         {
           "img": "v_mapa",
@@ -202,7 +292,8 @@
         },
         {
           "img": "v_mapa_91",
-          "at": "El domingo, los rosados"
+          "at": "en el mapa+0.12",
+          "tr": "fade"
         }
       ],
       "clicks": [
@@ -267,7 +358,7 @@
         },
         {
           "img": "v_datos_0",
-          "at": "Si el tiempo",
+          "at": "Continuar+0.35",
           "cam": [
             880,
             289,
@@ -285,16 +376,11 @@
       ],
       "highlights": [
         {
-          "box": "aviso",
-          "img": "v_carrito",
-          "at": "queda apartado",
-          "pad": 12
-        },
-        {
           "box": "timer",
           "img": "v_datos_0",
-          "at": "Si el tiempo",
-          "pad": 14
+          "at": "queda apartado",
+          "pad": 14,
+          "max": 6
         }
       ]
     },
@@ -303,18 +389,19 @@
       "tts": "Completa tu nombre, DNI, celular y lo que vas a vender, y pulsa «Ir al pago». Recuerda: no se alquilan stands para venta de alimentos.",
       "shots": [
         {
-          "img": "v_datos_0",
+          "img": "v_datos_3",
           "at": 0,
           "cam": [
             880,
             289,
             1040,
             585
-          ]
+          ],
+          "tr": "fade"
         },
         {
           "img": "v_datos_3",
-          "at": "tu nombre",
+          "at": "celular",
           "cam": [
             880,
             380,
@@ -330,7 +417,8 @@
             120,
             1040,
             585
-          ]
+          ],
+          "tr": "fade"
         }
       ],
       "clicks": [
@@ -341,9 +429,21 @@
           "noclick": true
         },
         {
+          "box": "dni",
+          "img": "v_datos_3",
+          "at": "DNI",
+          "noclick": true
+        },
+        {
+          "box": "phone",
+          "img": "v_datos_3",
+          "at": "celular",
+          "noclick": true
+        },
+        {
           "box": "notes",
           "img": "v_datos_5",
-          "at": "vender",
+          "at": "lo que vas a vender",
           "noclick": true
         },
         {
@@ -358,6 +458,32 @@
           "at": "Recuerda",
           "to": "end"
         }
+      ],
+      "type": [
+        {
+          "img": "v_datos_3",
+          "box": "name",
+          "at": "tu nombre",
+          "dur": 0.8
+        },
+        {
+          "img": "v_datos_3",
+          "box": "dni",
+          "at": "DNI",
+          "dur": 0.5
+        },
+        {
+          "img": "v_datos_3",
+          "box": "phone",
+          "at": "celular",
+          "dur": 0.55
+        },
+        {
+          "img": "v_datos_5",
+          "box": "notes",
+          "at": "lo que vas a vender",
+          "dur": 1.0
+        }
       ]
     },
     {
@@ -366,11 +492,13 @@
       "shots": [
         {
           "img": "v_pago_0",
-          "at": 0
+          "at": 0,
+          "tr": "nav"
         },
         {
           "img": "v_pago_2",
-          "at": "y pulsa"
+          "at": "Acepta los términos+0.12",
+          "tr": "fade"
         }
       ],
       "clicks": [
@@ -413,7 +541,8 @@
         },
         {
           "img": "v_micuenta",
-          "at": "También"
+          "at": "También",
+          "tr": "fade"
         }
       ],
       "overlays": [
@@ -444,7 +573,7 @@
       "tail": 2.2,
       "shots": [
         {
-          "img": "v_home",
+          "img": "h_home",
           "at": 0,
           "blur": true
         }
