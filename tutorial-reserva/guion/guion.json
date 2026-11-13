@@ -13,7 +13,8 @@
     "diez de la mañana.": "10:00 a. m.",
     "diez de la mañana": "10:00 a. m.",
     "ochenta y cinco soles": "S/ 85",
-    "ciento diez": "S/ 110"
+    "ciento diez": "S/ 110",
+    "seis dígitos": "6 dígitos"
   },
   "scenes": [
     {
@@ -546,10 +547,18 @@
       ]
     },
     {
-      "id": "08b_yape",
+      "id": "08x_omitida",
       "tts": "con tu celular y el código de «Aprobar compras» de tu app.",
-      "lead": 7.0,
-      "tail": 2.4,
+      "skip": true,
+      "shots": []
+    },
+    {
+      "id": "08b_yape",
+      "tts": "Para pagar con Yape, sigue estos pasos. Uno: abre tu app de Yape. Dos: toca «Aprobar compras». Tres: copia tu código de aprobación, de seis dígitos. Cuatro: vuelve al formulario, escribe tu celular y el código. Cinco: pulsa «Yapear». ¡Y listo!",
+      "pista": "audio/brian_v4_yape.mp3",
+      "palabras": "audio/brian_v4_yape_stt.json",
+      "lead": 0.15,
+      "tail": 1.2,
       "shots": [
         {
           "img": "c_yape_info",
@@ -557,15 +566,15 @@
         },
         {
           "img": "c_yape_2",
-          "at": "con tu celular+0.15",
-          "tr": "fade"
+          "at": "vuelve al formulario+0.25",
+          "tr": "cut"
         }
       ],
       "clicks": [
         {
           "box": "continuar",
           "img": "c_yape_info",
-          "at": "con tu celular"
+          "at": "vuelve al formulario+0.2"
         },
         {
           "box": [
@@ -575,19 +584,19 @@
             60
           ],
           "img": "c_yape_2",
-          "at": "con tu celular+0.4",
+          "at": "escribe tu celular",
           "noclick": true
         },
         {
           "box": "in1",
           "img": "c_yape_2",
-          "at": "el código",
+          "at": "y el código",
           "noclick": true
         },
         {
           "box": "pay",
           "img": "c_yape_2",
-          "at": "@end-1.7",
+          "at": "pulsa «Yapear»",
           "noclick": true
         }
       ],
@@ -600,82 +609,90 @@
             496,
             60
           ],
-          "at": "con tu celular+0.45",
+          "at": "escribe tu celular+0.1",
           "dur": 0.9
         },
         {
           "img": "c_yape_2",
           "box": "in1",
-          "at": "el código+0.15",
+          "at": "y el código+0.10",
           "dur": 0.1
         },
         {
           "img": "c_yape_2",
           "box": "in2",
-          "at": "el código+0.32",
+          "at": "y el código+0.25",
           "dur": 0.1
         },
         {
           "img": "c_yape_2",
           "box": "in3",
-          "at": "el código+0.49",
+          "at": "y el código+0.40",
           "dur": 0.1
         },
         {
           "img": "c_yape_2",
           "box": "in4",
-          "at": "el código+0.66",
+          "at": "y el código+0.55",
           "dur": 0.1
         },
         {
           "img": "c_yape_2",
           "box": "in5",
-          "at": "el código+0.83",
+          "at": "y el código+0.70",
           "dur": 0.1
         },
         {
           "img": "c_yape_2",
           "box": "in6",
-          "at": "el código+1.00",
+          "at": "y el código+0.85",
           "dur": 0.1
         }
       ],
       "highlights": [
         {
+          "box": "pasos",
+          "img": "c_yape_info",
+          "at": "sigue estos pasos",
+          "pad": 12,
+          "to": "Uno:-0.3"
+        },
+        {
           "box": "pay",
           "img": "c_yape_2",
-          "at": "@end-2.0",
-          "pad": 10
+          "at": "Cinco:",
+          "pad": 10,
+          "max": 5
         }
       ],
       "overlays": [
         {
           "type": "phone",
-          "from": 0.15,
-          "to": 7.0,
+          "from": "Uno:-0.35",
+          "to": "Cuatro:",
           "x": 1190,
           "screens": [
             {
               "img": "yape_paso1_inicio",
-              "dur": 2.2,
+              "at": "Uno:-0.35",
               "tap": [
                 502,
                 466
               ],
-              "tap_at": 1.25
+              "tap_text": "de Yape."
             },
             {
               "img": "yape_paso2_app",
-              "dur": 2.2,
+              "at": "Dos:",
               "tap": [
                 512,
                 214
               ],
-              "tap_at": 1.25
+              "tap_text": "«Aprobar compras»"
             },
             {
               "img": "yape_paso3_codigo",
-              "dur": 2.45,
+              "at": "Tres:",
               "callout": {
                 "box": [
                   16,
@@ -684,15 +701,15 @@
                   804
                 ],
                 "text": "Aquí aparece tu código de 6 dígitos",
-                "at": 0.4
+                "at_text": "copia tu código"
               }
             }
           ]
         },
         {
           "type": "step",
-          "from": 0.15,
-          "to": 2.35,
+          "from": "Uno:",
+          "to": "Dos:",
           "n": 1,
           "title": "Abre tu app Yape",
           "sub": "En tu celular",
@@ -702,8 +719,8 @@
         },
         {
           "type": "step",
-          "from": 2.35,
-          "to": 4.55,
+          "from": "Dos:",
+          "to": "Tres:",
           "n": 2,
           "title": "Toca «Aprobar compras»",
           "sub": "Está en la pantalla principal de Yape",
@@ -713,8 +730,8 @@
         },
         {
           "type": "step",
-          "from": 4.55,
-          "to": 7.0,
+          "from": "Tres:",
+          "to": "Cuatro:",
           "n": 3,
           "title": "Copia tu código de aprobación",
           "sub": "Son 6 dígitos",
@@ -724,8 +741,8 @@
         },
         {
           "type": "step",
-          "from": 7.0,
-          "to": "@end-2.1",
+          "from": "Cuatro:",
+          "to": "Cinco:",
           "n": 4,
           "title": "Escribe tu celular y el código",
           "x": 36,
@@ -734,7 +751,7 @@
         },
         {
           "type": "step",
-          "from": "@end-2.1",
+          "from": "Cinco:",
           "to": "end",
           "n": 5,
           "title": "Pulsa «Yapear»",

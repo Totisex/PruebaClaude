@@ -2,7 +2,7 @@
 
 Voz: Brian - Warm, Smooth, Confident · modelo `eleven_v4` · ElevenLabs
 
-Texto para pegar en ElevenLabs (con pausas): `locucion-brian-v3.txt`.
+Textos para pegar en ElevenLabs (con pausas): `locucion-brian-v3.txt` (principal) y `locucion-brian-yape.txt` (Yape).
 
 ## 1. Intro
 
@@ -40,14 +40,26 @@ Rótulo en pantalla: «No se alquilan stands para venta de alimentos»
 
 ## 8. Confirma y paga
 
-> Acepta los términos y pulsa «Pagar». En el formulario de Culqi, paga con tarjeta, o por Yape, con tu celular y el código de «Aprobar compras» de tu app.
+> Acepta los términos y pulsa «Pagar». En el formulario de Culqi, paga con tarjeta, o por Yape,
 
-Rótulo en pantalla: «Tarjeta o Yape · formulario seguro de Culqi»
+## 9. Paso a paso con Yape (segunda locución)
 
-## 9. Confirmación
+> Para pagar con Yape, sigue estos pasos. Uno: abre tu app de Yape. Dos: toca «Aprobar compras». Tres: copia tu código de aprobación, de seis dígitos. Cuatro: vuelve al formulario, escribe tu celular y el código. Cinco: pulsa «Yapear». ¡Y listo!
+
+Tarjeta en pantalla: Paso 1 · Abre tu app Yape
+
+Tarjeta en pantalla: Paso 2 · Toca «Aprobar compras»
+
+Tarjeta en pantalla: Paso 3 · Copia tu código de aprobación
+
+Tarjeta en pantalla: Paso 4 · Escribe tu celular y el código
+
+Tarjeta en pantalla: Paso 5 · Pulsa «Yapear»
+
+## 10. Confirmación
 
 > Cuando el pago se confirma, verás tu código de reserva. También lo tienes en «Mi cuenta».
 
-## 10. Cierre
+## 11. Cierre
 
 > Reserva tu stand en feria la pantera punto com. ¡Te esperamos!

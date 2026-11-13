@@ -101,6 +101,8 @@ def build_timeline():
     d_lead, d_tail = (0.0, 0.0) if "pista" in g["voice"] else (0.35, 0.55)
     t = 0.0
     for s in g["scenes"]:
+        if s.get("skip"):
+            continue
         al = json.loads((BASE / f"audio/{s['id']}.json").read_text())["alignment"]
         text = s["tts"]
         starts, ends = al["character_start_times_seconds"], al["character_end_times_seconds"]
@@ -179,7 +181,19 @@ def build_timeline():
             ends_ += [max(a + 0.6, ct - 0.85) for ct, cb in scene_clicks if ct > a and not inside(cb, hb)]
             T["highs"].append(dict(t=a, end=min(ends_), box=hb))
         for o in s.get("overlays", []):
-            T["overlays"].append(dict(o, t=A(o["from"]), end=A(o["to"])))
+            ov = dict(o, t=A(o["from"]), end=A(o["to"]))
+            if "screens" in o and any("at" in sc for sc in o["screens"]):
+                # pantallas del celular ancladas a la voz: cada una dura hasta la siguiente
+                scr = [dict(sc) for sc in o["screens"]]
+                s_st = [A(sc["at"]) - ov["t"] for sc in scr] + [ov["end"] - ov["t"]]
+                for k_, sc in enumerate(scr):
+                    sc["dur"] = s_st[k_ + 1] - s_st[k_]
+                    if "tap_text" in sc:
+                        sc["tap_at"] = A(sc["tap_text"]) - ov["t"] - s_st[k_]
+                    if "callout" in sc and "at_text" in sc["callout"]:
+                        sc["callout"] = dict(sc["callout"], at=A(sc["callout"]["at_text"]) - ov["t"] - s_st[k_])
+                ov["screens"] = scr
+            T["overlays"].append(ov)
         for b in s.get("badges", []):
             T["badges"].append(dict(b, t=A(b["at"]), end=A(b.get("to", "end"))))
         for (i, j) in caption_spans(text):
@@ -209,6 +223,8 @@ def build_timeline():
 def caption_spans(text, maxlen=66):
     spans, i = [], 0
     for m in re.finditer(r"[.!?:;](?=\s|$)", text):
+        if m.group() == ":" and len(text[i:m.end()].strip()) <= 10:
+            continue  # «Uno:» va con su frase
         spans.append((i, m.end()))
         i = m.end()
     if i < len(text) and text[i:].strip():

@@ -7,14 +7,16 @@ de reserva actualizadas** y la fecha del **domingo 15 de noviembre**.
 
 | Archivo | Qué es |
 |---|---|
-| `salida/como-reservar.mp4` | Video final, 1920×1080, 30 fps, **1:34 min** (optimizado para web) |
+| `salida/como-reservar.mp4` | Video final, 1920×1080, 30 fps, **1:43 min** (optimizado para web) |
 | `salida/como-reservar-poster.jpg` | Portada (fotograma del título) |
 | `salida/como-reservar.vtt` | Subtítulos en formato WebVTT |
-| `guion/locucion-brian-v3.txt` | Texto de la locución, con pausas, tal como se pegó en ElevenLabs |
+| `guion/locucion-brian-v3.txt` | Texto de la locución principal, con pausas, tal como se pegó en ElevenLabs |
+| `guion/locucion-brian-yape.txt` | Texto de la locución del paso a paso de Yape |
 | `guion/guion.json` | Guion por escenas: texto narrado, capturas, clics, resaltados y rótulos |
 | `guion/guion.md` | El texto de la locución, para leer |
 | `audio/brian_v4_v3.mp3` | Locución completa: voz **Brian**, modelo **Eleven v4** |
 | `audio/brian_v4_v3_stt.json` | Tiempos por palabra (speech-to-text de ElevenLabs) |
+| `audio/brian_v4_yape.mp3` / `audio/brian_v4_yape_stt.json` | Locución del paso a paso de Yape y sus tiempos por palabra |
 | `audio/<escena>.mp3/.json` | La locución cortada por escena, con tiempos por carácter |
 | `capturas/` | Capturas HD reales de la web (`cajas.json`: posición de cada botón) |
 | `scripts/cortar_pista.py` | Corta una locución completa en escenas usando los tiempos por palabra |
@@ -63,9 +65,12 @@ confeti en la confirmación.
 El paso a paso de Yape usa tres capturas del celular que aportó la cuenta
 (`capturas/yape_paso1_inicio.jpg`, `yape_paso2_app.jpg`, `yape_paso3_codigo.jpg`):
 el nombre del titular está difuminado y el aviso de error de la tercera está
-tapado por la etiqueta «Aquí aparece tu código de 6 dígitos». Los pasos 1 a 3
-se ven sin voz, con tarjetas de paso en pantalla, en una pausa entre «…o por
-Yape,» y «con tu celular…».
+tapado por la etiqueta «Aquí aparece tu código de 6 dígitos». Brian narra los
+cinco pasos con una segunda locución (`guion/locucion-brian-yape.txt`), que
+sustituye a la frase «con tu celular y el código de "Aprobar compras" de tu
+app» de la locución principal (la escena `08x_omitida` del guion, que se corta
+pero no se usa). Cada pantalla, toque y tarjeta de paso se ancla a «Uno»,
+«Dos», «Tres», «Cuatro» y «Cinco».
 
 ## La voz
 
