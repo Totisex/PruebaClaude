@@ -287,12 +287,17 @@
           "tr": "fade"
         },
         {
-          "img": "v_mapa",
+          "img": "m_mapa",
           "at": "y toca un stand"
         },
         {
-          "img": "v_mapa_91",
-          "at": "en el mapa+0.12",
+          "img": "m_mapa_123",
+          "at": "los rosados+0.1",
+          "tr": "fade"
+        },
+        {
+          "img": "m_mapa_91",
+          "at": "los naranjas+0.1",
           "tr": "fade"
         }
       ],
@@ -303,37 +308,33 @@
           "at": "o el domingo"
         },
         {
+          "box": "s123",
+          "img": "m_mapa",
+          "at": "los rosados"
+        },
+        {
           "box": "s91",
-          "img": "v_mapa",
-          "at": "en el mapa"
+          "img": "m_mapa_123",
+          "at": "los naranjas"
         },
         {
           "box": "carrito_hdr",
-          "img": "v_mapa_91",
+          "img": "m_mapa_91",
           "at": "@end-0.6"
         }
       ],
       "highlights": [
         {
-          "box": "s123",
-          "img": "v_mapa",
-          "at": "los rosados",
+          "box": "info",
+          "img": "m_mapa_123",
+          "at": "una cara",
           "pad": 8
         },
         {
-          "box": "s91",
-          "img": "v_mapa",
-          "at": "los naranjas",
+          "box": "info",
+          "img": "m_mapa_91",
+          "at": "dos caras",
           "pad": 8
-        },
-        {
-          "box": [
-            1336,
-            906,
-            486,
-            150
-          ],
-          "at": "a ciento diez"
         }
       ],
       "badges": [
@@ -491,41 +492,156 @@
       "tts": "Acepta los términos y pulsa «Pagar». En el formulario de Culqi, paga con tarjeta, o por Yape, con tu celular y el código de «Aprobar compras» de tu app.",
       "shots": [
         {
-          "img": "v_pago_0",
+          "img": "c_pago_0",
           "at": 0,
           "tr": "nav"
         },
         {
-          "img": "v_pago_2",
+          "img": "c_pago_2",
           "at": "Acepta los términos+0.12",
           "tr": "fade"
+        },
+        {
+          "img": "c_culqi_0",
+          "at": "«Pagar»+0.35",
+          "tr": "fade"
+        },
+        {
+          "img": "c_yape_info",
+          "at": "o por Yape+0.15",
+          "tr": "fade"
+        },
+        {
+          "img": "c_yape_2",
+          "at": "con tu celular+0.15",
+          "tr": "fade"
+        },
+        {
+          "img": "c_yape_2",
+          "at": "@end-2.4",
+          "cam": [
+            620,
+            330,
+            1000,
+            563
+          ],
+          "cam_dur": 1.0
         }
       ],
       "clicks": [
         {
           "box": "check",
-          "img": "v_pago_0",
+          "img": "c_pago_0",
           "at": "Acepta los términos"
         },
         {
           "box": "pagar",
-          "img": "v_pago_2",
+          "img": "c_pago_2",
           "at": "«Pagar»"
+        },
+        {
+          "box": "tab_yape",
+          "img": "c_culqi_0",
+          "at": "o por Yape"
+        },
+        {
+          "box": "continuar",
+          "img": "c_yape_info",
+          "at": "con tu celular"
+        },
+        {
+          "box": [
+            884,
+            550,
+            496,
+            60
+          ],
+          "img": "c_yape_2",
+          "at": "con tu celular+0.4",
+          "noclick": true
+        },
+        {
+          "box": "in1",
+          "img": "c_yape_2",
+          "at": "el código",
+          "noclick": true
         }
       ],
       "highlights": [
         {
-          "box": "culqi",
-          "img": "v_pago_2",
-          "at": "En el formulario",
+          "box": "tab_tarjeta",
+          "img": "c_culqi_0",
+          "at": "con tarjeta",
+          "pad": 8
+        },
+        {
+          "box": "pasos",
+          "img": "c_yape_info",
+          "at": "o por Yape+0.3",
           "pad": 12
+        },
+        {
+          "box": "pay",
+          "img": "c_yape_2",
+          "at": "@end-1.9",
+          "pad": 10
         }
       ],
       "badges": [
         {
-          "text": "Tarjeta o Yape · formulario seguro de Culqi",
-          "at": "paga con tarjeta",
+          "text": "Yape: tu celular + el código de «Aprobar compras»",
+          "at": "el código",
           "to": "end"
+        }
+      ],
+      "tail": 2.5,
+      "type": [
+        {
+          "img": "c_yape_2",
+          "box": [
+            884,
+            550,
+            496,
+            60
+          ],
+          "at": "con tu celular+0.45",
+          "dur": 0.9
+        },
+        {
+          "img": "c_yape_2",
+          "box": "in1",
+          "at": "el código+0.15",
+          "dur": 0.1
+        },
+        {
+          "img": "c_yape_2",
+          "box": "in2",
+          "at": "el código+0.32",
+          "dur": 0.1
+        },
+        {
+          "img": "c_yape_2",
+          "box": "in3",
+          "at": "el código+0.49",
+          "dur": 0.1
+        },
+        {
+          "img": "c_yape_2",
+          "box": "in4",
+          "at": "el código+0.66",
+          "dur": 0.1
+        },
+        {
+          "img": "c_yape_2",
+          "box": "in5",
+          "at": "el código+0.83",
+          "dur": 0.1
+        },
+        {
+          "img": "c_yape_2",
+          "box": "in6",
+          "at": "el código+1.00",
+          "dur": 0.1
         }
       ]
     },
@@ -535,12 +651,12 @@
       "tail": 1.0,
       "shots": [
         {
-          "img": "v_pago_2",
+          "img": "c_pago_2",
           "at": 0,
           "blur": true
         },
         {
-          "img": "v_micuenta",
+          "img": "c_micuenta",
           "at": "También",
           "tr": "fade"
         }
