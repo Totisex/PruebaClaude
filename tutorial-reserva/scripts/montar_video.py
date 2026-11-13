@@ -349,9 +349,9 @@ class Renderer:
 
     # ------------------------------------------------------------- disposición
     def place_captions(self):
-        band = H - 200
         for c in self.T["caps"]:
-            cw = caption_img(c["text"]).width
+            cw, chh = caption_img(c["text"]).size
+            band = H - 56 - chh - 8  # borde superior del subtítulo abajo
             cx0, cx1 = (W - cw) / 2, (W + cw) / 2
             targets = [(k["t"], k["box"]) for k in self.T["clicks"] if c["t"] - 0.9 <= k["t"] <= c["end"] + 0.3]
             targets += [(h["t"], h["box"]) for h in self.T["highs"] if h["t"] < c["end"] and h["end"] > c["t"]]

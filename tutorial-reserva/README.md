@@ -7,7 +7,7 @@ de reserva actualizadas** y la fecha del **domingo 15 de noviembre**.
 
 | Archivo | Qué es |
 |---|---|
-| `salida/como-reservar.mp4` | Video final, 1920×1080, 30 fps, **1:24 min**, ~9,5 MB (optimizado para web) |
+| `salida/como-reservar.mp4` | Video final, 1920×1080, 30 fps, **1:27 min** (optimizado para web) |
 | `salida/como-reservar-poster.jpg` | Portada (fotograma del título) |
 | `salida/como-reservar.vtt` | Subtítulos en formato WebVTT |
 | `guion/locucion-brian-v3.txt` | Texto de la locución, con pausas, tal como se pegó en ElevenLabs |
@@ -33,15 +33,28 @@ de reserva actualizadas** y la fecha del **domingo 15 de noviembre**.
    **inicia sesión**.
 4. Elige el **sábado o el domingo** y toca un stand libre en el **mapa**. El
    domingo, los **rosados** son de una cara (**S/ 85**) y los **naranjas** de
-   dos caras (**S/ 110**).
+   dos caras (**S/ 110**). En el video se toca un rosado (el 123) y luego se
+   cambia a un naranja (el 91).
 5. En el carrito pulsa **«Continuar»**: el stand queda **apartado 8 minutos**;
    si el tiempo se acaba, vuelve a quedar libre.
 6. Completa **nombre, DNI, celular y lo que vas a vender** y pulsa **«Ir al
    pago»**. No se alquilan stands para venta de alimentos.
-7. Acepta los términos y pulsa **«Pagar»**: tarjeta o Yape en el formulario
-   seguro de Culqi.
+7. Acepta los términos y pulsa **«Pagar»**: se abre el formulario seguro de
+   **Culqi**. Para pagar con **Yape**: elige la pestaña Yape, pulsa
+   «Continuar», escribe tu celular y el código de 6 dígitos de **«Aprobar
+   compras»** de la app de Yape, y pulsa **«Yapear»**.
 8. Con el pago confirmado verás tu **código de reserva**; también está en
    **«Mi cuenta»**.
+
+## Animaciones
+
+Desplazamiento real por páginas largas con la cabecera fija; transición de
+navegación con zoom desde el botón pulsado; escritura letra a letra con cursor
+de texto (registro, «Tus datos», celular y código de Yape); botones que se
+hunden al pulsarlos; cursor con trayectoria curva y rebote; zoom lento hacia la
+siguiente acción; foco con bordes suaves; subtítulos tipo karaoke; rótulos con
+efecto muelle; títulos que suben desde una máscara; check que se dibuja y
+confeti en la confirmación.
 
 ## La voz
 
@@ -95,9 +108,15 @@ Si cambias el texto de la locución, actualiza también el `tts` de cada escena 
 - Los pasos con sesión se hicieron con la cuenta de administración. En las
   capturas se sustituyeron, solo en el navegador, el «Panel» de la cabecera y los
   datos de «Mi cuenta» por los de María, y se ocultó el historial.
-- Para grabar se apartó el stand 91 del domingo (reserva `PP-7PB4CW`) y se llegó
-  a la página de pago **sin pagar**; el apartado expiró solo a los 8 minutos.
-  Versiones anteriores dejaron también `PP-C5G7VH` y `PP-SNK8PJ`, expiradas.
+- Para grabar se apartó el stand 91 del domingo (reserva `PP-QDAYZH`), se llegó
+  a la página de pago, se abrió el formulario de Culqi, se eligió Yape y se
+  escribieron un celular y un código de ejemplo **sin pulsar «Yapear»**. El
+  host de Culqi que procesa pagos (`secure.culqi.com`) se dejó bloqueado a
+  propósito, así que no se podía cobrar nada. Al abrir Culqi, la web alarga el
+  apartado a 15 minutos; expiró solo a las 06:13 UTC del 13-11-2026. Versiones anteriores dejaron también `PP-C5G7VH`, `PP-SNK8PJ` y
+  `PP-7PB4CW`, expiradas.
+- En la pestaña de tarjeta de Culqi se sustituyó el correo de la cuenta por
+  `maria@ejemplo.com` en la captura.
 - La tarjeta «¡Reserva confirmada!» del video es un gráfico, no una captura:
   no se hizo ningún pago.
 
@@ -110,6 +129,6 @@ Si cambias el texto de la locución, actualiza también el `tts` de cada escena 
 3. **GitHub desactualizado:** `main` de `Totisex/pantera-pulguera` sigue en el
    13 de octubre; los cambios de producción (carrito, Culqi, reservas los
    lunes) no están en el repositorio.
-4. **Reservas de prueba** `PP-C5G7VH`, `PP-SNK8PJ` y `PP-7PB4CW`: quedan como
+4. **Reservas de prueba** `PP-C5G7VH`, `PP-SNK8PJ`, `PP-7PB4CW` y `PP-QDAYZH`: quedan como
    expiradas a nombre de la cuenta de administración; puedes borrarlas desde el
    panel.

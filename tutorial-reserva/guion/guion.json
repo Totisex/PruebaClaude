@@ -325,16 +325,22 @@
       ],
       "highlights": [
         {
-          "box": "info",
-          "img": "m_mapa_123",
-          "at": "una cara",
-          "pad": 8
+          "box": [
+            176,
+            226,
+            640,
+            72
+          ],
+          "at": "una cara"
         },
         {
-          "box": "info",
-          "img": "m_mapa_91",
-          "at": "dos caras",
-          "pad": 8
+          "box": [
+            176,
+            226,
+            640,
+            72
+          ],
+          "at": "dos caras"
         }
       ],
       "badges": [
