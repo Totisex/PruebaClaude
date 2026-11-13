@@ -495,7 +495,8 @@
     },
     {
       "id": "08_pago",
-      "tts": "Acepta los términos y pulsa «Pagar». En el formulario de Culqi, paga con tarjeta, o por Yape, con tu celular y el código de «Aprobar compras» de tu app.",
+      "tts": "Acepta los términos y pulsa «Pagar». En el formulario de Culqi, paga con tarjeta, o por Yape,",
+      "tail": 0.3,
       "shots": [
         {
           "img": "c_pago_0",
@@ -516,22 +517,6 @@
           "img": "c_yape_info",
           "at": "o por Yape+0.15",
           "tr": "fade"
-        },
-        {
-          "img": "c_yape_2",
-          "at": "con tu celular+0.15",
-          "tr": "fade"
-        },
-        {
-          "img": "c_yape_2",
-          "at": "@end-2.4",
-          "cam": [
-            620,
-            330,
-            1000,
-            563
-          ],
-          "cam_dur": 1.0
         }
       ],
       "clicks": [
@@ -549,7 +534,34 @@
           "box": "tab_yape",
           "img": "c_culqi_0",
           "at": "o por Yape"
+        }
+      ],
+      "highlights": [
+        {
+          "box": "tab_tarjeta",
+          "img": "c_culqi_0",
+          "at": "con tarjeta",
+          "pad": 8
+        }
+      ]
+    },
+    {
+      "id": "08b_yape",
+      "tts": "con tu celular y el código de «Aprobar compras» de tu app.",
+      "lead": 7.0,
+      "tail": 2.4,
+      "shots": [
+        {
+          "img": "c_yape_info",
+          "at": 0
         },
+        {
+          "img": "c_yape_2",
+          "at": "con tu celular+0.15",
+          "tr": "fade"
+        }
+      ],
+      "clicks": [
         {
           "box": "continuar",
           "img": "c_yape_info",
@@ -571,36 +583,14 @@
           "img": "c_yape_2",
           "at": "el código",
           "noclick": true
-        }
-      ],
-      "highlights": [
-        {
-          "box": "tab_tarjeta",
-          "img": "c_culqi_0",
-          "at": "con tarjeta",
-          "pad": 8
-        },
-        {
-          "box": "pasos",
-          "img": "c_yape_info",
-          "at": "o por Yape+0.3",
-          "pad": 12
         },
         {
           "box": "pay",
           "img": "c_yape_2",
-          "at": "@end-1.9",
-          "pad": 10
+          "at": "@end-1.7",
+          "noclick": true
         }
       ],
-      "badges": [
-        {
-          "text": "Yape: tu celular + el código de «Aprobar compras»",
-          "at": "el código",
-          "to": "end"
-        }
-      ],
-      "tail": 2.5,
       "type": [
         {
           "img": "c_yape_2",
@@ -649,6 +639,114 @@
           "at": "el código+1.00",
           "dur": 0.1
         }
+      ],
+      "highlights": [
+        {
+          "box": "pay",
+          "img": "c_yape_2",
+          "at": "@end-2.0",
+          "pad": 10
+        }
+      ],
+      "overlays": [
+        {
+          "type": "phone",
+          "from": 0.15,
+          "to": 7.0,
+          "x": 1190,
+          "screens": [
+            {
+              "img": "yape_paso1_inicio",
+              "dur": 2.2,
+              "tap": [
+                502,
+                466
+              ],
+              "tap_at": 1.25
+            },
+            {
+              "img": "yape_paso2_app",
+              "dur": 2.2,
+              "tap": [
+                512,
+                214
+              ],
+              "tap_at": 1.25
+            },
+            {
+              "img": "yape_paso3_codigo",
+              "dur": 2.45,
+              "callout": {
+                "box": [
+                  16,
+                  716,
+                  574,
+                  804
+                ],
+                "text": "Aquí aparece tu código de 6 dígitos",
+                "at": 0.4
+              }
+            }
+          ]
+        },
+        {
+          "type": "step",
+          "from": 0.15,
+          "to": 2.35,
+          "n": 1,
+          "title": "Abre tu app Yape",
+          "sub": "En tu celular",
+          "x": 110,
+          "y": 420,
+          "w": 780
+        },
+        {
+          "type": "step",
+          "from": 2.35,
+          "to": 4.55,
+          "n": 2,
+          "title": "Toca «Aprobar compras»",
+          "sub": "Está en la pantalla principal de Yape",
+          "x": 110,
+          "y": 420,
+          "w": 780
+        },
+        {
+          "type": "step",
+          "from": 4.55,
+          "to": 7.0,
+          "n": 3,
+          "title": "Copia tu código de aprobación",
+          "sub": "Son 6 dígitos",
+          "x": 110,
+          "y": 420,
+          "w": 780
+        },
+        {
+          "type": "step",
+          "from": 7.0,
+          "to": "@end-2.1",
+          "n": 4,
+          "title": "Escribe tu celular y el código",
+          "x": 36,
+          "y": 430,
+          "w": 455
+        },
+        {
+          "type": "step",
+          "from": "@end-2.1",
+          "to": "end",
+          "n": 5,
+          "title": "Pulsa «Yapear»",
+          "sub": "¡Y listo!",
+          "x": 36,
+          "y": 430,
+          "w": 455
+        }
+      ],
+      "cursor_start": [
+        1300,
+        900
       ]
     },
     {

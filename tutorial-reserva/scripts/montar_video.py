@@ -546,8 +546,16 @@ class Renderer:
                     press = math.sin(math.pi * dt / 0.24)
         return pos, vis, ring, press
 
+    def phone_dim(self, t):
+        a = 0.0
+        for o in self.T["overlays"]:
+            if o["type"] == "phone" and o["t"] <= t <= o["end"]:
+                a = max(a, clamp((t - o["t"]) / 0.35) * clamp((o["end"] - t) / 0.35))
+        return a
+
     def draw_cursor(self, layer, cam, t):
         pos, vis, ring, press = self.cursor_state(t)
+        vis *= 1 - self.phone_dim(t)
         if vis <= 0.01:
             return
         sx, sy = self.to_screen(cam, *pos)
@@ -710,6 +718,140 @@ class Renderer:
             d.rounded_rectangle((x0, 590 + im2.height / 2 - 4, x0 + (im2.width - 20) * u, 590 + im2.height / 2 + 6), radius=5, fill=PINK + (255,))
         im3 = text_img(o["sub"], "Inter-SemiBold.otf", 44, CREAM)
         self.reveal(layer, im3, W / 2, 735 - im3.height / 2, el, 0.7, 9, anchor_center=True)
+
+    # ------------------------------------------------------------- paso a paso con el celular
+    PH_SH = 930                       # alto de la pantalla del celular en el video
+    PH_SC = 930 / 1280                # escala de las capturas del celular (590x1280)
+    PH_SW = round(590 * 930 / 1280)
+    PH_BEZ = 16
+
+    @staticmethod
+    @lru_cache(maxsize=8)
+    def phone_screen(name):
+        im = Image.open(BASE / f"capturas/{name}.jpg").convert("RGB")
+        return im
+
+    @staticmethod
+    @lru_cache(maxsize=1)
+    def phone_body():
+        bz, sw, sh = Renderer.PH_BEZ, Renderer.PH_SW, Renderer.PH_SH
+        pw, ph = sw + 2 * bz, sh + 2 * bz
+        pad = 40
+        im = Image.new("RGBA", (pw + 2 * pad, ph + 2 * pad), (0, 0, 0, 0))
+        sh_ = Image.new("L", im.size, 0)
+        ImageDraw.Draw(sh_).rounded_rectangle((pad + 10, pad + 18, pad + pw + 10, pad + ph + 18), radius=62, fill=150)
+        sh_ = sh_.filter(ImageFilter.GaussianBlur(16))
+        shadow = Image.new("RGBA", im.size, (0, 0, 0, 0))
+        shadow.putalpha(sh_)
+        im.alpha_composite(shadow)
+        d = ImageDraw.Draw(im)
+        d.rounded_rectangle((pad, pad, pad + pw, pad + ph), radius=60, fill=(18, 18, 22, 255), outline=(70, 70, 80, 255), width=3)
+        mask = Image.new("L", (sw, sh), 0)
+        ImageDraw.Draw(mask).rounded_rectangle((0, 0, sw - 1, sh - 1), radius=46, fill=255)
+        return im, mask, pad
+
+    def phone_frame(self, o, el):
+        """Pantalla del celular en el instante el (con transición, toque y etiqueta)."""
+        sc_list = o["screens"]
+        starts, acc = [], 0.0
+        for sc in sc_list:
+            starts.append(acc)
+            acc += sc["dur"]
+        idx = max(i for i, st in enumerate(starts) if el >= st) if el >= 0 else 0
+        sw, sh, k = self.PH_SW, self.PH_SH, self.PH_SC
+
+        def render(i, se):
+            sc = sc_list[i]
+            im = self.phone_screen(sc["img"]).copy()
+            d = ImageDraw.Draw(im, "RGBA")
+            if "tap" in sc:
+                tx, ty = sc["tap"]
+                dt = se - sc["tap_at"]
+                if -0.8 < dt < 0.05:  # aviso: anillo que late sobre lo que se va a tocar
+                    r = 62 + 6 * math.sin(se * 10)
+                    al = int(220 * clamp((dt + 0.8) / 0.25))
+                    d.ellipse((tx - r, ty - r, tx + r, ty + r), outline=PINK + (al,), width=9)
+                if 0 <= dt < 0.55:  # el dedo toca
+                    u = dt / 0.55
+                    r = 34 * (1 - 0.25 * math.sin(math.pi * min(1, u * 2)))
+                    d.ellipse((tx - r, ty - r, tx + r, ty + r), fill=(255, 255, 255, int(170 * (1 - u))))
+                    rr = 34 + 70 * ease_out(u)
+                    d.ellipse((tx - rr, ty - rr, tx + rr, ty + rr), outline=PINK + (int(255 * (1 - u)),), width=8)
+            if "callout" in sc and se > sc["callout"].get("at", 0.3):
+                x0, y0, x1, y1 = sc["callout"]["box"]
+                u = (se - sc["callout"].get("at", 0.3)) / 0.5
+                scl = 0.85 + 0.15 * spring(u)
+                cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+                hw, hh = (x1 - x0) / 2 * scl, (y1 - y0) / 2 * scl
+                d.rounded_rectangle((cx - hw, cy - hh, cx + hw, cy + hh), radius=16, fill=(255, 240, 247, 255), outline=PINK + (255,), width=6)
+                f = INTER_B(31)
+                d.text((cx, cy), sc["callout"]["text"], font=f, fill=PINK_DEEP, anchor="mm")
+            return im.resize((sw, sh), Image.LANCZOS)
+
+        se = el - starts[idx]
+        cur = render(idx, se)
+        if idx > 0 and se < 0.4:  # transición tipo iOS: la nueva pantalla entra desde la derecha
+            u = ease_out(se / 0.4)
+            prev = render(idx - 1, sc_list[idx - 1]["dur"])
+            canvas = Image.new("RGB", (sw, sh), (0, 0, 0))
+            canvas.paste(prev, (int(-sw * 0.3 * u), 0))
+            canvas.paste(cur, (int(sw * (1 - u)), 0))
+            cur = canvas
+        return cur
+
+    def ov_phone(self, layer, el, out, o):
+        a = clamp(el / 0.35) * clamp(out / 0.35)
+        if a <= 0:
+            return
+        layer.alpha_composite(Image.new("RGBA", (W, H), INK + (int(175 * a),)))
+        body, mask, pad = self.phone_body()
+        scr = self.phone_frame(o, el - 0.1).convert("RGBA")
+        scr.putalpha(mask)
+        ph = body.copy()
+        ph.alpha_composite(scr, (pad + self.PH_BEZ, pad + self.PH_BEZ))
+        enter = 1 - spring(el / 1.0)
+        leave = 1 - ease_out(out / 0.4)
+        x = o.get("x", 1180) - pad + 760 * enter + 760 * leave
+        y = (H - ph.height) / 2
+        layer.alpha_composite(with_alpha(ph, a), (int(x), int(y)))
+
+    @staticmethod
+    @lru_cache(maxsize=16)
+    def step_card(n, title, sub, w):
+        fT, fS, fK, fN = FREDOKA(54 if w > 600 else 42), INTER_SB(32 if w > 600 else 28), INTER_B(26), ANTON(64)
+        lines = [" ".join(l) for l in wrap(title, fT, w - 150)]
+        lh = fT.size + 8
+        hgt = 40 + 34 + lh * len(lines) + (fS.size + 18 if sub else 0) + 30
+        im = Image.new("RGBA", (w + 10, hgt + 10), (0, 0, 0, 0))
+        d = ImageDraw.Draw(im)
+        d.rounded_rectangle((10, 10, w + 9, hgt + 9), radius=30, fill=PINK + (255,))
+        d.rounded_rectangle((0, 0, w - 1, hgt - 1), radius=30, fill=(17, 12, 16, 245), outline=PINK + (255,), width=4)
+        d.ellipse((30, 34, 120, 124), fill=PINK + (255,))
+        d.text((75, 80), str(n), font=fN, fill=WHITE, anchor="mm")
+        x = 145
+        kx = x
+        for ch in f"PASO {n}":
+            d.text((kx, 40), ch, font=fK, fill=PINK)
+            kx += fK.getlength(ch) + 5
+        y = 78
+        for l in lines:
+            d.text((x, y), l, font=fT, fill=WHITE)
+            y += lh
+        if sub:
+            d.text((x, y + 8), sub, font=fS, fill=CREAM)
+        return im
+
+    def ov_step(self, layer, el, out, o):
+        a = clamp(el / 0.25) * clamp(out / 0.25)
+        if a <= 0:
+            return
+        card = self.step_card(o["n"], o["title"], o.get("sub", ""), o.get("w", 760))
+        dx = -50 * (1 - ease_out(el / 0.45))
+        sc = 0.9 + 0.1 * spring(el / 0.8)
+        if abs(sc - 1) > 0.005:
+            card = card.resize((int(card.width * sc), int(card.height * sc)), Image.BICUBIC)
+        y = o.get("y", 380) - card.height / 2 + 60
+        layer.alpha_composite(with_alpha(card, a), (int(o.get("x", 110) + dx), int(y)))
 
     # ------------------------------------------------------------- fotograma
     def frame(self, t):

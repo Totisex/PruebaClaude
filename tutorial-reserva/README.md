@@ -7,7 +7,7 @@ de reserva actualizadas** y la fecha del **domingo 15 de noviembre**.
 
 | Archivo | Qué es |
 |---|---|
-| `salida/como-reservar.mp4` | Video final, 1920×1080, 30 fps, **1:27 min** (optimizado para web) |
+| `salida/como-reservar.mp4` | Video final, 1920×1080, 30 fps, **1:34 min** (optimizado para web) |
 | `salida/como-reservar-poster.jpg` | Portada (fotograma del título) |
 | `salida/como-reservar.vtt` | Subtítulos en formato WebVTT |
 | `guion/locucion-brian-v3.txt` | Texto de la locución, con pausas, tal como se pegó en ElevenLabs |
@@ -40,9 +40,13 @@ de reserva actualizadas** y la fecha del **domingo 15 de noviembre**.
 6. Completa **nombre, DNI, celular y lo que vas a vender** y pulsa **«Ir al
    pago»**. No se alquilan stands para venta de alimentos.
 7. Acepta los términos y pulsa **«Pagar»**: se abre el formulario seguro de
-   **Culqi**. Para pagar con **Yape**: elige la pestaña Yape, pulsa
-   «Continuar», escribe tu celular y el código de 6 dígitos de **«Aprobar
-   compras»** de la app de Yape, y pulsa **«Yapear»**.
+   **Culqi**. Para pagar con **Yape**, elige la pestaña Yape y sigue el paso a
+   paso del video:
+   1. Abre tu app Yape.
+   2. Toca **«Aprobar compras»** (pantalla principal de Yape).
+   3. Copia tu **código de aprobación** (6 dígitos).
+   4. En Culqi pulsa «Continuar» y escribe tu celular y el código.
+   5. Pulsa **«Yapear»**.
 8. Con el pago confirmado verás tu **código de reserva**; también está en
    **«Mi cuenta»**.
 
@@ -55,6 +59,13 @@ hunden al pulsarlos; cursor con trayectoria curva y rebote; zoom lento hacia la
 siguiente acción; foco con bordes suaves; subtítulos tipo karaoke; rótulos con
 efecto muelle; títulos que suben desde una máscara; check que se dibuja y
 confeti en la confirmación.
+
+El paso a paso de Yape usa tres capturas del celular que aportó la cuenta
+(`capturas/yape_paso1_inicio.jpg`, `yape_paso2_app.jpg`, `yape_paso3_codigo.jpg`):
+el nombre del titular está difuminado y el aviso de error de la tercera está
+tapado por la etiqueta «Aquí aparece tu código de 6 dígitos». Los pasos 1 a 3
+se ven sin voz, con tarjetas de paso en pantalla, en una pausa entre «…o por
+Yape,» y «con tu celular…».
 
 ## La voz
 
