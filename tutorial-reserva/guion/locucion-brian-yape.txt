@@ -1,0 +1,6 @@
+Para pagar con Yape, sigue estos pasos. <break time="0.8s" />
+Uno: abre tu app de Yape. <break time="1.2s" />
+Dos: toca «Aprobar compras». <break time="1.2s" />
+Tres: copia tu código de aprobación, de seis dígitos. <break time="1.2s" />
+Cuatro: vuelve al formulario, escribe tu celular y el código. <break time="1.5s" />
+Cinco: pulsa «Yapear». ¡Y listo!
